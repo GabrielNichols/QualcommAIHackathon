@@ -19,7 +19,7 @@ const createWindow = () => {
     },
   });
   //bro seriously 
-mainWindow.setAlwaysOnTop(true,'screen')
+mainWindow.setAlwaysOnTop(false,'screen')
 
   if (MAIN_WINDOW_VITE_DEV_SERVER_URL) {
     mainWindow.loadURL(MAIN_WINDOW_VITE_DEV_SERVER_URL);

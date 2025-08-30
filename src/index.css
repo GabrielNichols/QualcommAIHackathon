@@ -251,6 +251,7 @@ body {
   background: #ffffff;
   overflow: hidden;
   position: relative;
+  display: flex; /* permitir dividir a tela entre webview e agent */
 }
 
 .webview-container {
@@ -264,6 +265,30 @@ body {
   height: 100%;
   border: none;
   background: #ffffff;
+}
+
+.agent-panel {
+  width: 40%;
+  height: 100%;
+  border-left: 1px solid #e2e8f0;
+  background: #f8fafc;
+  display: flex;
+  flex-direction: column;
+}
+
+.agent-header {
+  padding: 12px 16px;
+  border-bottom: 1px solid #e2e8f0;
+  background: #ffffff;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.agent-body {
+  padding: 12px 16px;
+  overflow: auto;
+  color: #334155;
+  flex: 1;
 }
 
 /* Responsividade */

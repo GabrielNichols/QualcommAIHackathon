@@ -16,6 +16,7 @@ export default function App() {
   const [address, setAddress] = useState('');
   const [canGoBack, setCanGoBack] = useState(false);
   const [canGoForward, setCanGoForward] = useState(false);
+  const [showAgent, setShowAgent] = useState(false); // novo estado
 
   const webviewRef = useRef(null);
   const urlInputRef = useRef(null);
@@ -264,19 +265,41 @@ export default function App() {
               <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" />
             </svg>
           </button>
+          <button
+            id="agent-button"
+            className="bookmark-btn"
+            onClick={() => setShowAgent(v => !v)}
+            title={showAgent ? 'Fechar Agent' : 'Abrir Agent'}
+            aria-pressed={showAgent}
+          >
+            Agent
+          </button>
         </div>
       </div>
 
       <div className="content-area">
-        <div className="webview-container">
+        <div
+          className="webview-container"
+          style={{ width: showAgent ? '60%' : '100%' }} // divide quando o agent estiver aberto
+        >
           <webview
             id="webview"
             ref={webviewRef}
-            // Usa o URL da aba ativa; 'about:blank' quando vazia
             src={activeTab.url || ''}
             style={{ width: '100%', height: '100%', border: 'none', background: '#ffffff' }}
           />
         </div>
+
+        {showAgent && (
+          <div className="agent-panel">
+            {/* Substitua pelo conteúdo real do Agent quando disponível */}
+            <div className="agent-header">Agent</div>
+            <div className="agent-body">
+              <p>Modo Agent ativo.</p>
+              <p>Coloque aqui os componentes e interações do seu agente.</p>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
