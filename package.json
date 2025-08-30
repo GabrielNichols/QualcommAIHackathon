@@ -21,6 +21,7 @@
     "@electron-forge/plugin-fuses": "^7.6.0",
     "@electron-forge/plugin-vite": "^7.6.0",
     "@electron/fuses": "^1.8.0",
+    "@vitejs/plugin-react": "^4.3.1",
     "electron": "33.2.1",
     "vite": "^5.4.11"
   },
@@ -28,6 +29,8 @@
   "license": "MIT",
   "dependencies": {
     "electron-squirrel-startup": "^1.0.1",
-    "electron-tabs": "^1.0.4"
+    "electron-tabs": "^1.0.4",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   }
 }
