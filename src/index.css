@@ -1,0 +1,372 @@
+/* Reset e configurações base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Janela do browser */
+.browser-window {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: #ffffff;
+  border-radius: 12px;
+  margin: 8px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15), 0 8px 16px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+/* Barra de abas */
+.tab-bar {
+  display: flex;
+  align-items: center;
+  background: #f8fafc;
+  border-bottom: 1px solid #e2e8f0;
+  padding: 8px 16px;
+  gap: 12px;
+  min-height: 48px;
+}
+
+.tabs-container {
+  display: flex;
+  flex: 1;
+  gap: 2px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.tabs-container::-webkit-scrollbar {
+  display: none;
+}
+
+.tab {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: #e2e8f0;
+  border-radius: 8px 8px 0 0;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  color: #64748b;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  min-width: 120px;
+  max-width: 240px;
+  position: relative;
+  border: 1px solid transparent;
+}
+
+.tab.active {
+  background: #ffffff;
+  color: #1e293b;
+  border-color: #e2e8f0;
+  border-bottom-color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  z-index: 1;
+}
+
+.tab:hover:not(.active) {
+  background: #cbd5e1;
+  color: #475569;
+}
+
+.add-tab-btn {
+  background: none;
+  border: none;
+  font-size: 18px;
+  font-weight: 300;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+}
+
+.add-tab-btn:hover {
+  background: #e2e8f0;
+  color: #475569;
+}
+
+.browser-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.browser-menu {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+}
+
+.browser-menu:hover {
+  background: #e2e8f0;
+  color: #475569;
+}
+
+/* Barra de navegação */
+.navigation-bar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 16px;
+  background: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+  min-height: 56px;
+}
+
+.nav-controls {
+  display: flex;
+  gap: 4px;
+}
+
+.nav-btn {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  color: #64748b;
+}
+
+.nav-btn:hover {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+  color: #475569;
+}
+
+.nav-btn:active {
+  background: #e2e8f0;
+  transform: scale(0.95);
+}
+
+.nav-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.nav-btn:disabled:hover {
+  background: #f8fafc;
+  border-color: #e2e8f0;
+  transform: none;
+}
+
+.address-bar {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 24px;
+  padding: 0 16px;
+  gap: 12px;
+  height: 40px;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.address-bar:focus-within {
+  background: #ffffff;
+  border-color: #0ea5e9;
+  box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
+}
+
+.security-icon {
+  color: #059669;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.url-input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 14px;
+  color: #1e293b;
+  font-weight: 400;
+}
+
+.url-input::placeholder {
+  color: #94a3b8;
+}
+
+.bookmark-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.bookmark-btn:hover {
+  background: rgba(100, 116, 139, 0.1);
+  color: #475569;
+}
+
+/* Área de conteúdo */
+.content-area {
+  flex: 1;
+  background: #ffffff;
+  overflow: hidden;
+  position: relative;
+}
+
+.webview-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+#webview {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: #ffffff;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .browser-window {
+    margin: 4px;
+    border-radius: 8px;
+  }
+  
+  .tab-bar {
+    padding: 6px 12px;
+  }
+  
+  .navigation-bar {
+    padding: 8px 12px;
+    gap: 12px;
+  }
+  
+  .nav-controls {
+    gap: 2px;
+  }
+  
+  .nav-btn {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .address-bar {
+    padding: 0 12px;
+    height: 36px;
+  }
+  
+  .tab {
+    min-width: 100px;
+    max-width: 180px;
+    padding: 6px 12px;
+  }
+}
+
+/* Animações e micro-interações */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.tab {
+  animation: fadeIn 0.2s ease-out;
+}
+
+/* Estados de foco melhorados */
+.nav-btn:focus-visible,
+.add-tab-btn:focus-visible,
+.browser-menu:focus-visible,
+.bookmark-btn:focus-visible {
+  outline: 2px solid #0ea5e9;
+  outline-offset: 2px;
+}
+
+.url-input:focus {
+  outline: none;
+}
+
+/* Melhorias visuais */
+.tab::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: transparent;
+  transition: background 0.2s ease;
+}
+
+.tab.active::before {
+  background: #0ea5e9;
+}
+
+/* Scrollbar personalizada para abas */
+.tabs-container {
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+}
+
+.tabs-container::-webkit-scrollbar {
+  height: 4px;
+}
+
+.tabs-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.tabs-container::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 2px;
+}
+
+.tabs-container::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
