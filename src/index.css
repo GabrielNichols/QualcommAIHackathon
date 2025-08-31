@@ -23,7 +23,7 @@ body {
   height: 100vh;
   background: #ffffff;
   border-radius: 12px;
-  margin: 8px;
+  /* margin: 8px; */
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15), 0 8px 16px rgba(0, 0, 0, 0.1);
   overflow: hidden;
 }
@@ -84,6 +84,23 @@ body {
   color: #475569;
 }
 
+.tab::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: conic-gradient(from var(--angle), #ff4545, #00ff99, #006aff, #ff0095, #ff4545);
+  animation: spin 3s linear infinite;
+  opacity: 0.5; /* tabs inativas mais sutis */
+  transition: opacity 0.2s ease;
+}
+
+.tab.active::before {
+  opacity: 1; /* destaque na tab ativa */
+}
+
 .add-tab-btn {
   background: none;
   border: none;
@@ -141,6 +158,13 @@ body {
   background: #ffffff;
   border-bottom: 1px solid #e2e8f0;
   min-height: 56px;
+}
+
+/* novo contêiner à direita da barra de navegação */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .nav-controls {
@@ -289,6 +313,125 @@ body {
   overflow: auto;
   color: #334155;
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Área de mensagens */
+.chat-messages {
+  flex: 1;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 8px 12px;
+}
+
+.chat-message {
+  display: flex;
+  max-width: 100%;
+}
+
+.chat-message.agent { justify-content: flex-start; }
+.chat-message.user { justify-content: flex-end; }
+
+.chat-bubble {
+  max-width: 80%;
+  padding: 10px 12px;
+  border-radius: 12px;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.chat-message.agent .chat-bubble {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  color: #1e293b;
+  border-top-left-radius: 4px;
+}
+
+.chat-message.user .chat-bubble {
+  color: #fff;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border: 1px solid transparent;
+  border-top-right-radius: 4px;
+}
+
+/* Composer */
+.chat-compose {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  margin: 4px 12px 12px;
+}
+
+.chat-input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 14px;
+  color: #1e293b;
+}
+
+.chat-input::placeholder { color: #94a3b8; }
+
+/* Botões do composer */
+.chat-icon-btn {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #64748b;
+  transition: all 0.2s ease;
+}
+
+.chat-icon-btn:hover {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+  color: #475569;
+}
+
+/* Botão send com mesma borda animada do Agent */
+.chat-send-btn {
+  all: unset;
+  cursor: pointer;
+  position: relative;
+  width: 36px;              /* igual ao botão de áudio */
+  height: 36px;             /* igual ao botão de áudio */
+  padding: 0;               /* remove padding extra */
+  border-radius: 10px;
+  color: #475569;
+  border: 2px solid transparent;
+  background:
+    linear-gradient(#ffffff, #ffffff) padding-box,
+    conic-gradient(from var(--angle), #ff4545, #00ff99, #006aff, #ff0095, #ff4545) border-box;
+  animation: spin 3s linear infinite;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* padroniza tamanho do ícone do send */
+.chat-send-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+.chat-send-btn:hover {
+  background:
+    linear-gradient(#f8fafc, #f8fafc) padding-box,
+    conic-gradient(from var(--angle), #ff4545, #00ff99, #006aff, #ff0095, #ff4545) border-box;
 }
 
 /* Responsividade */
@@ -365,12 +508,14 @@ body {
   left: 0;
   right: 0;
   height: 2px;
-  background: transparent;
-  transition: background 0.2s ease;
+  background: conic-gradient(from var(--angle), #ff4545, #00ff99, #006aff, #ff0095, #ff4545);
+  animation: spin 3s linear infinite;
+  opacity: 0.5; /* tabs inativas mais sutis */
+  transition: opacity 0.s ease;
 }
 
 .tab.active::before {
-  background: #0ea5e9;
+  opacity: 1; /* destaque na tab ativa */
 }
 
 /* Scrollbar personalizada para abas */
@@ -394,4 +539,46 @@ body {
 
 .tabs-container::-webkit-scrollbar-thumb:hover {
   background: #94a3b8;
+}
+
+/* Borda animada para o botão Agent */
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes spin {
+  from { --angle: 0deg; }
+  to { --angle: 360deg; }
+}
+
+#agent-button {
+  position: relative;
+  border-radius: 10px;
+  padding: 6px 12px;
+  height: 36px; /* alinha com outros botões da navbar */
+  border: 2px solid transparent;
+  background:
+    /* preenchimento interno combinando com o fundo branco da navbar */
+    linear-gradient(#ffffff, #ffffff) padding-box,
+    /* borda animada */
+    conic-gradient(from var(--angle), #ff4545, #00ff99, #006aff, #ff0095, #ff4545) border-box;
+  animation: spin 3s linear infinite;
+  color: #475569;
+}
+
+#agent-button:hover {
+  background:
+    linear-gradient(#f8fafc, #f8fafc) padding-box,
+    conic-gradient(from var(--angle), #ff4545, #00ff99, #006aff, #ff0095, #ff4545) border-box;
+}
+
+/* acessibilidade: reduz movimento se necessário */
+@media (prefers-reduced-motion: reduce) {
+  #agent-button,
+  #send-button,
+  .chat-send-btn {
+    animation: none;
+  }
 }
