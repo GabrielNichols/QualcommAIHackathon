@@ -13,7 +13,7 @@ export default function NavigationBar({
   onToggleAgent,
   urlInputRef,
   onHome, // novo
-  onCapture, // novo
+  // onCapture removido
 }) {
   return (
     <div className="navigation-bar">
@@ -87,7 +87,7 @@ export default function NavigationBar({
         <button
           id="capture-button"
           className="bookmark-btn"
-          onClick={onCapture}
+          onClick={() => { /* no-op: funcionalidade desativada */ }}
           title="Capturar e salvar HTML"
         >
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">

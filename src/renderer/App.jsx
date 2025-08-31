@@ -246,7 +246,6 @@ export default function App() {
         onToggleAgent={() => setShowAgent(v => !v)}
         urlInputRef={urlInputRef}
         onHome={goHome}
-        onCapture={() => capturePage({ save: true })}
       />
 
       <ContentArea
