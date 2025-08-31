@@ -1,6 +1,8 @@
 import React, { useState, useRef, useEffect, useMemo } from 'react';
+import { handleOpenSiteRequest } from '../agent/agentActions.js';
+import { summarizeEconomicNews, chat } from '../agent/llmClient.js';
 
-export default function ContentArea({ showAgent, webviewRef, src }) {
+export default function ContentArea({ showAgent, webviewRef, src, openUrlInNewTab, capturePage }) {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
   const [showOrb, setShowOrb] = useState(false);
@@ -18,6 +20,27 @@ export default function ContentArea({ showAgent, webviewRef, src }) {
   const [panelClosing, setPanelClosing] = useState(false);
 
   const triggerChatChange = () => setChatChanged(true);
+
+  // Texto e estado para efeito de digitação no hint da home
+  const HOME_HINT_TEXT = 'Olá Rafael, posso te ajudar?';
+  const [typedHomeHint, setTypedHomeHint] = useState('');
+
+  // Dispara a animação de digitação somente na aba inicial (about:blank)
+  useEffect(() => {
+    if (!src || src === 'about:blank') {
+      let i = 0;
+      const full = HOME_HINT_TEXT;
+      setTypedHomeHint('');
+      const timer = setInterval(() => {
+        i += 1;
+        setTypedHomeHint(full.slice(0, i));
+        if (i >= full.length) clearInterval(timer);
+      }, 60); // velocidade da digitação
+      return () => clearInterval(timer);
+    } else {
+      setTypedHomeHint('');
+    }
+  }, [src]);
 
   useEffect(() => {
     if (showAgent) {
@@ -56,6 +79,13 @@ export default function ContentArea({ showAgent, webviewRef, src }) {
     }
     return arr;
   }, []);
+
+  // Mock: e-mails importantes
+  const mockEmails = useMemo(() => ([
+    { from: 'Equipe Itaú', subject: 'Atualização de segurança da conta', time: '08:24' },
+    { from: 'João - RH', subject: 'Assinatura do contrato', time: '09:12' },
+    { from: 'Cliente VIP', subject: 'Proposta comercial', time: 'Ontem' },
+  ]), []);
 
   // cria nova sessão e define como atual
   const createNewSession = (initialMessages) => {
@@ -99,19 +129,16 @@ export default function ContentArea({ showAgent, webviewRef, src }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const sendMessage = () => {
-    const value = input.trim();
-    if (!value) return;
-    const nextMessages = [...messages, { role: 'user', text: value }];
-    setMessages(nextMessages);
-    setInput('');
-    // atualiza sessão atual e move para o topo
+  // Helper: atualiza sessões com novo array de mensagens e move para o topo
+  const upsertCurrentSessionWithMessages = (nextMessages, titleFallback) => {
     setSessions((prev) => {
-      const idx = prev.findIndex(s => s.id === currentSessionId);
+      const idx = prev.findIndex((s) => s.id === currentSessionId);
       let updated = prev.slice();
       if (idx >= 0) {
         const s = prev[idx];
-        const title = s.title && s.title !== 'Nova conversa' ? s.title : value.slice(0, 40);
+        const title = s.title && s.title !== 'Nova conversa'
+          ? s.title
+          : (titleFallback || s.title);
         const newSession = { ...s, messages: nextMessages, title, updatedAt: Date.now() };
         updated.splice(idx, 1);
         updated = [newSession, ...updated];
@@ -119,8 +146,8 @@ export default function ContentArea({ showAgent, webviewRef, src }) {
         const s = {
           id: currentSessionId ?? String(Date.now()),
           messages: nextMessages,
-          title: value.slice(0, 40),
-          updatedAt: Date.now()
+          title: titleFallback || 'Nova conversa',
+          updatedAt: Date.now(),
         };
         updated = [s, ...updated];
         if (!currentSessionId) setCurrentSessionId(s.id);
@@ -130,22 +157,174 @@ export default function ContentArea({ showAgent, webviewRef, src }) {
     });
   };
 
+  // Aguarda o webview montar e terminar o load da próxima navegação
+  const waitForWebviewLoad = useMemo(() => {
+    return (targetUrl, timeout = 15000) =>
+      new Promise((resolve, reject) => {
+        const start = Date.now();
+        const waitMount = () => {
+          const wv = webviewRef.current;
+          if (!wv) {
+            if (Date.now() - start > timeout) return reject(new Error('Webview não disponível para carregar.'));
+            return setTimeout(waitMount, 50);
+          }
+          const cleanup = () => {
+            wv.removeEventListener('did-finish-load', onLoad);
+            wv.removeEventListener('dom-ready', onDomReady);
+            wv.removeEventListener('did-fail-load', onFail);
+          };
+          const onLoad = () => {
+            cleanup();
+            resolve();
+          };
+          const onDomReady = () => {
+            // Considera DOM pronto como suficiente para captura/resumo
+            cleanup();
+            resolve();
+          };
+          const onFail = (_event, errorCode, _errorDescription, _validatedURL, isMainFrame) => {
+            // Ignore falhas de sub-recurso/iframe; só rejeite se falha for do frame principal
+            if (isMainFrame) {
+              cleanup();
+              const code = typeof errorCode === 'number' ? ` (código ${errorCode})` : '';
+              reject(new Error(`Falha ao carregar a página${code}.`));
+            }
+          };
+          wv.addEventListener('did-finish-load', onLoad, { once: true });
+          wv.addEventListener('dom-ready', onDomReady, { once: true });
+          // não use { once: true } aqui para continuar capturando sub-falhas sem remover listener
+          wv.addEventListener('did-fail-load', onFail);
+        };
+        waitMount();
+      });
+  }, [webviewRef]);
+
+  const sendMessage = () => {
+    const value = input.trim();
+    if (!value) return;
+
+    // adiciona mensagem do usuário
+    const nextMessages = [...messages, { role: 'user', text: value }];
+    setMessages(nextMessages);
+    setInput('');
+    upsertCurrentSessionWithMessages(nextMessages, value.slice(0, 40));
+
+    // animação de troca de chat ao enviar
+    triggerChatChange();
+
+    // Detecta URL para acionar o agente
+    const urlMatch = value.match(/https?:\/\/[^\s)]+/i);
+  if (urlMatch && openUrlInNewTab && capturePage) {
+      const url = urlMatch[0];
+
+      // feedback imediato
+      setMessages((prev) => {
+        const withAck = [...prev, { role: 'agent', text: `Abrindo e analisando: ${url}` }];
+        upsertCurrentSessionWithMessages(withAck);
+        return withAck;
+      });
+
+      (async () => {
+        try {
+          const result = await handleOpenSiteRequest({
+            url,
+            openInNewTab: openUrlInNewTab, // fix: usa o prop correto
+            waitForLoad: waitForWebviewLoad,
+            capturePage,
+            summarize: summarizeEconomicNews,
+          });
+
+          const summary = result?.summary || 'Não foi possível gerar o resumo.';
+          setMessages((prev) => {
+            const withSummary = [...prev, { role: 'agent', text: summary }];
+            upsertCurrentSessionWithMessages(withSummary);
+            return withSummary;
+          });
+        } catch (e) {
+          const reason = (e?.message || '');
+          setMessages((prev) => {
+            const withErr = [...prev, { role: 'agent', text: `Falha ao processar o site. ${reason}`.trim() }];
+            upsertCurrentSessionWithMessages(withErr);
+            return withErr;
+          });
+        }
+      })();
+    } else {
+      // Chat geral com LLM local para perguntas que não são URLs
+      (async () => {
+        try {
+          const answer = await chat(value);
+          setMessages((prev) => {
+            const withAns = [...prev, { role: 'agent', text: answer }];
+            upsertCurrentSessionWithMessages(withAns);
+            return withAns;
+          });
+        } catch (e) {
+          const reason = (e?.message || '');
+          setMessages((prev) => {
+            const withErr = [...prev, { role: 'agent', text: `Falha ao responder. ${reason}`.trim() }];
+            upsertCurrentSessionWithMessages(withErr);
+            return withErr;
+          });
+        }
+      })();
+    }
+  };
+
   useEffect(() => {
     endRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
 
   return (
-    <div className="content-area">
+    <div className={`content-area ${(!src || src === 'about:blank') ? 'initial-tab' : ''}`}>
       <div
         className="webview-container"
         style={{ width: (showAgent || panelClosing) ? '60%' : '100%' }}
       >
-        <webview
-          id="webview"
-          ref={webviewRef}
-          src={src}
-          style={{ width: '100%', height: '100%', border: 'none' }}
-        />
+        {(!src || src === 'about:blank') ? (
+          <>
+            {/* Email Card (novo estilo) */}
+            <div className="email-card" role="region" aria-label="E-mails importantes">
+              <div className="email-header">
+                <h3>E-mails importantes</h3>
+              </div>
+              <ul className="email-list">
+                {mockEmails.map((m, i) => (
+                  <li key={i} className="email-item">
+                    <div className="email-content">
+                      <div className="email-sender">{m.from}</div>
+                      <div className="email-subject">{m.subject}</div>
+                    </div>
+                    <div className="email-time">{m.time}</div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Orb + hint da home */}
+            <div className="home-orb-container" aria-hidden="true">
+              <div className="orb-stage">
+                <div className="orb-wrap">
+                  {orbParticles.map(({ i, z, y, delay }) => (
+                    <div
+                      key={i}
+                      className="orb-p"
+                      style={{ '--i': i, '--z': z, '--y': y, '--delay': delay }}
+                    />
+                  ))}
+                </div>
+              </div>
+              <div className="home-orb-hint">{typedHomeHint}</div>
+            </div>
+          </>
+        ) : (
+          <webview
+            id="webview"
+            ref={webviewRef}
+            src={src}
+            style={{ width: '100%', height: '100%', border: 'none' }}
+          />
+        )}
       </div>
 
       {panelVisible && (
@@ -297,6 +476,9 @@ export default function ContentArea({ showAgent, webviewRef, src }) {
               ))}
             </div>
           </div>
+
+          {/* Hint acima dos controles */}
+          <div className="orb-prompt">Pressione para falar</div>
 
           <div className="orb-controls">
             <button
