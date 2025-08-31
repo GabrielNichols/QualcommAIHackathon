@@ -1,0 +1,442 @@
+REGULAMENTO/PLANO DE OPERAÇÃO DA PROMOÇÃO
+ Edge AI Developer Hackathon – São Paulo 2025
+ CERTIFICADO DE AUTORIZAÇÃO SPA/ME Nº 03.043568/2025
+ 1 - EMPRESAS PROMOTORAS:
+ 1.1 - Empresa Mandatária:
+ Razão Social: QUALCOMM SERVICOS DE TELECOMUNICACOES LTDA.
+ Endereço: JORNALISTA ROBERTO MARINHO Número: 85 Complemento: ANDAR 6 EDIF TOWER BRIDGE CORP
+ Bairro: CIDADE MONCOES Município: SAO PAULO UF: SP CEP:04576-010
+ CNPJ/MF nº: 05.948.524/0001-22
+ 2 - MODALIDADE DA PROMOÇÃO:
+ Concurso
+ 3 - ÁREA DE ABRANGÊNCIA:
+ Todo o território nacional.
+ 4 - PERÍODO DA PROMOÇÃO:
+ 07/08/2025 a 31/08/2025
+ 5 - PERÍODO DE PARTICIPAÇÃO:
+ 07/08/2025 a 31/08/2025
+ 6 - CRITÉRIO DE PARTICIPAÇÃO:
+ LEIA ATENTAMENTE AS REGRAS A SEGUIR. AO SE INSCREVER, VOCÊ RECONHECE QUE LEU, COMPREENDEU E CONCORDA
+ INCONDICIONALMENTE EM CUMPRIR ESTE REGULAMENTO E AS DECISÕES DA QUALCOMM, QUE SERÃO FINAIS E
+ VINCULATIVAS EM TODOS OS ASPECTOS.
+ Introdução
+ Este é o regulamento oficial (“Regulamento”) para participação no Edge AI Developer Hackathon – São Paulo 2025 (“Hackathon”), organizado
+ pela QUALCOMM SERVICOS DE TELECOMUNICAÇÕES LTDA. (“Qualcomm” ou “Organizador”). O Hackathon será realizado
+ presencialmente no Cubo Itaú, localizado na Alameda Vicente Pinzon, 54, Vila Olímpia, São Paulo, SP, nos dias 30 e 31 de agosto de 2025.
+ Competição Baseada em Habilidades
+ Não é necessário nenhum pagamento ou compra para participar ou vencer o Hackathon. O Hackathon não é um sorteio, esquema de loteria
+ ou jogo de azar, sendo estritamente uma competição de habilidades. Trata-se de um concurso que envolve o desenvolvimento de aplicações
+ de inteligência artificial de edge (“Edge AI”) utilizando plataformas de hardware da Qualcomm ou de empresas do grupo Qualcomm.
+ Código de Conduta e Propriedade Intelectual
+ Código de Conduta
+ Ao participar do Hackaton, todos os participantes anuem e aderem com as regras previstas no  
+Anexo I – Código de Conduta
+ que é baseado
+ em boas práticas internacionais, garantindo um ambiente inclusivo, seguro e respeitoso, independentemente de raça, sexo, idade, orientação
+ sexual, deficiência, aparência, origem, etnia ou religião. Comportamentos inadequados resultarão em advertência ou expulsão, a critério da
+ Qualcomm. Incidentes relacionados ao descumprimento do Código de Conduta deverão ser relatados à equipe do evento ou através do e
+mail: 
+hackathonbrasil.external@qti.qualcomm.com
+ .
+ Política Anti-Assédio
+ O Hackathon é dedicado a uma experiência livre de assédio. Não serão tolerados comentários ofensivos, intimidação, contato físico
+ inadequado ou conteúdo que viole a dignidade dos participantes. Projetos, apresentações e as ações dos participantes também estão sujeitos
+ a esta política.
+ Propriedade Intelectual
+ Direitos
+ : Os participantes detêm os direitos de Propriedade Intelectual ("Direitos de Propriedade Intelectual”) de suas submissões (“Materiais
+ do Participante”), exceto por direitos de terceiros. Incentivamos o compartilhamento em código aberto para promover inovação.
+ Garantias
+ : Os participantes garantem que:
+ As submissões não utilizam conteúdo protegido por direitos de terceiros sem permissão.
+ Não contêm conteúdo ilegal, difamatório, ofensivo, malware ou códigos nocivos.
+ São autores das submissões e não violam direitos de terceiros.
+ Em caso de projetos baseados em soluções existentes devem comprovar autorização.
+ Licença
+ : Os participantes concedem à Qualcomm uma licença irrevogável e não exclusiva para usar, divulgar e promover conteúdos
+ relacionados ao Hackathon (ex.: vídeos, slides) para fins de marketing, com os devidos créditos.
+ Produtos da Qualcomm
+ : A Qualcomm ou empresas do grupo da Qualcomm pode fornecer acesso limitado a softwares, hardwares ou
+ infraestruturas proprietárias (“Produtos da Qualcomm”) sob acordos de licença específicos, exclusivamente para uso no Hackathon. Todos os
+ Página  de 
+6
+ 1
+direitos sobre esses produtos pertencem à Qualcomm ou empresas do grupo da Qualcomm.
+ 6.3.4. Objetivo
+ O Hackathon conectará até 100 participantes entre desenvolvedores, especialistas em produto, UX/UI, IA e dados, promovendo inovação por
+ meio de soluções práticas de Edge AI utilizando plataformas de empresas do grupo da Qualcomm, como Snapdragon® X, Snapdragon® X
+ Elite ou Snapdragon® X Series Compute Platforms.
+ Datas e Horários
+ Abertura das Inscrições
+ Todos os prazos e horários são considerados no horário de Brasília (BRT).
+ : 7 de agosto de 2025 (9h00)
+ Encerramento das Inscrições:
+ Divulgação dos Selecionados:
+ 20 de agosto de 2025 (23h59)
+ 23 de agosto de 2025 (12h00)
+ Evento (Desenvolvimento e Avaliação):
+ Anúncio dos Vencedores:
+ 30 de agosto de 2025 (13h00) – 31 de agosto de 2025 (16h00)
+ 31 de agosto de 2025 (16h30)
+ O cronograma completo estará disponível no site:
+ (
+ https://www.qualcomm.com/developer/events/edge-ai-developer-hackathon
+ ).
+ Elegibilidade
+ O Hackathon é aberto a:
+ Indivíduos residentes no Brasil, com idade igual ou superior a 18 anos (“Indivíduos Elegíveis”).
+ As inscrições são exclusivamente individuais.
+ Formação de Equipes: No início do evento, os participantes selecionados ("Participantes Selecionados”) poderão formar equipes de
+ 4 a 6 membros, com auxílio da Qualcomm, se necessário. Composição sugerida (não obrigatória):
+ 1 Especialista em Produto
+ 1 Especialista em UX/UI
+ Até 3 Desenvolvedores
+ 1 Especialista em Inteligência Artificial e Dados
+ O Hackathon NÃO é aberto a:
+ “
+ Indivíduos residentes fora do Brasil.
+ Participantes de outros eventos Edge AI Developer Hackathon organizados pela Qualcomm ou outras empresas do Grupo da
+ Qualcomm em outras regiões. Indivíduos afiliados a agências governamentais ou entidades estatais.
+ Funcionários, representantes ou Agentes da Qualcomm ou de outras Entidades Promotoras (conforme definido abaixo), seus
+ familiares diretos (incluem o cônjuge, filhos e enteados, pais e padrastos, irmãos e meios-irmãos do indivíduo) ou membros do mesmo
+ domicílio (inclui qualquer outra pessoa que partilhe a mesma residência com o indivíduo durante pelo menos três (3) meses do ano).
+ Agentes
+ ” incluem indivíduos ou organizações que agem em nome e sob a direção de uma entidade de promoção através de uma relação
+ contratual ou similar.
+ “
+ Entidades Promotoras
+ ” incluem as empresas, instituições e/ou organizações envolvidas com o design, produção, agências, promoção paga,
+ execução ou distribuição do Hackathon, incluindo a Promotora.
+ Juízes (conforme definido abaixo) ou empresas/indivíduos que empregam Juízes.
+ Qualquer indivíduo ou organização cuja participação, a critério da Qualcomm, gere conflito de interesse.
+ Indivíduos considerados “Pessoa Restrita”, conforme definido abaixo:
+ Pessoa Restrita é definido como qualquer pessoa coletiva ou singular (i) listada numa lista de partes proibidas ou restritas publicada pelo
+ governo dos EUA, incluindo, mas não se limitando à "Lista de Cidadãos Especialmente Designados e Pessoas Bloqueadas" e "Lista
+ Consolidada de Sanções" do Departamento do Tesouro dos EUA, e a Lista de Entidades, Lista Não Verificada e Lista de Pessoas Negadas do
+ Departamento de Comércio dos EUA, ou qualquer lista semelhante mantida pelo Reino Unido, a União Europeia ou os seus Estados
+Membros, ou outra autoridade local aplicável; (ii) localizada, organizada ou residente num país ou região contra a qual o governo dos EUA
+ tenha imposto sanções económicas abrangentes ou um embargo; isto inclui atualmente Cuba, Irão, Coreia do Norte, Síria e a Crimeia e as
+ chamadas regiões da República Popular de Donetsk e República Popular de Luhansk da Ucrânia, mas pode ser alterado ao longo do tempo;
+ (iii) detida (50% ou mais no total) ou controlada, direta ou indiretamente, por uma pessoa ou entidade descrita em (i) ou (ii) aqui; ou (iv) de
+ outra forma alvo de sanções dos EUA (coletivamente, “Pessoas Restritas”).
+ Inscrição e Seleção
+ Inscrição: Os participantes devem se inscrever individualmente pelo site (https://www.qualcomm.com/developer/events/edge-ai
+developer-hackathon), seguindo as instruções fornecidas, entre 7 de agosto de 2025 (9h00) e 20 de agosto de 2025 (23h59). Apenas
+ uma inscrição por CPF é permitida.
+ Pré-requisitos: Os inscritos devem ter experiência em pelo menos uma das áreas: Produto, UX/UI, Desenvolvimento ou Inteligência
+ Artificial e Dados.
+ Seleção: Até 100 participantes serão selecionados pela Qualcomm com base em critérios internos, como experiência técnica e adequação ao
+ tema. Os Participantes Selecionados serão notificados por e-mail até 23 de agosto de 2025 e deverão assinar documentos de verificação (ex.:
+ Termo de Participação, Declaração de Elegibilidade) no prazo de 5 dias úteis. A não entrega pode resultar em desclassificação, a critério da
+ Qualcomm.
+ Sessão Preparatória
+ : A Qualcomm poderá realizar uma sessão online opcional via Microsoft Teams antes do evento para esclarecimentos e
+ apresentação de informações sobre plataformas e ferramentas.
+ Participação
+ O Hackathon é 100% presencial e restrito aos 100 Participantes Selecionados. A participação é voluntária, gratuita, nominal e
+ intransferível.
+ Formação de Equipes: No início do evento, os Participantes Selecionados poderão formar equipes de 4 a 6 membros, com auxílio da
+ Qualcomm, se necessário. Composição sugerida (não obrigatória):
+ Página  de 
+6
+ 2
+1 Especialista em Produto
+ 1 Especialista em UX/UI
+ Até 3 Desenvolvedores
+ 1 Especialista em Inteligência Artificial e Dados
+ Responsabilidades: Os participantes são responsáveis por transporte, hospedagem, equipamentos e qualquer outro custo ou despesa que
+ não seja responsabilidade da Qualcomm. A Qualcomm fornecerá o espaço de trabalho, internet e alimentação no Cubo Itaú, além de 1 (um)
+ laptop Snapdragon por equipe, que deverá ser devolvido à organização ao final do Hackathon (este rol é taxativo), sendo os participantes os
+ responsáveis por trazer quaisquer outros laptops ou equipamentos necessários para o desenvolvimento.
+ Programação
+ O evento incluirá mentorias, oficinas, avaliações e apresentações de pitch.
+ Dia 1 (30/08/2025): Início às 9h00 com orientação sobre as plataformas do Hackathon, mentorias e desenvolvimento. As equipes
+ poderão trabalhar durante a madrugada no local ou retornar às suas residências.
+ Dia 2 (31/08/2025): Retorno às 9h00, submissão de projetos até 13h00, pitches a partir de 15h00, seguidos de premiação e happy
+ hour.
+ Alterações na programação serão comunicadas através dos canais oficiais do Hackathon.
+ Submissão de Projetos
+ Prazo: As submissões devem ser enviadas até 13h00 de 31 de agosto de 2025 via formulário fornecido pela Qualcomm, contendo:
+ Vídeo Demo: Até 120 segundos, no YouTube (público ou não listado), mostrando a solução funcional (sem protótipos).
+ Apresentação: Slides em PDF (recomenda-se 10 slides), incluindo problema, solução, tecnologias usadas e roadmap.
+ Repositório: 1 a 3 links públicos no GitHub, com README (descrição, nomes/e-mails dos membros, instruções de configuração/uso,
+ licença de código aberto) e boas práticas de commits (“Conventional Commits”).
+ Requisitos Técnicos:
+ A aplicação deve ser de código aberto, sem código fechado.
+ Deve rodar nativamente nas plataformas de empresas do grupo da Qualcomm, com predominância de processamento local (híbrido
+ edge/nuvem é aceitável).
+ O uso de recursos do Qualcomm AI Hub é altamente recomendado.
+ Componentes opcionais: testes, notas adicionais, referências e código comentado.
+ Limites: Máximo de 5 links (1 vídeo, 1 PDF, 1-3 repositórios). Links fora do especificado ou vídeos acima de 120 segundos causarão
+ desclassificação.
+ Code Review
+ : As submissões passarão por análise qualitativa de código. Projetos sem código próprio podem ser desclassificados, a critério
+ da Qualcomm.
+ Demonstração
+ : Cada equipe realizará um pitch de 3 minutos, seguido de 3 minutos de interação com os Juízes (conforme item 9), a partir de
+ 15h00 de 31/08/2025.
+ 7 - APURAÇÃO E DESCRIÇÃO DE PRÊMIOS:
+ PERÍODO DA APURAÇÃO: 31/08/2025 15:01 a 31/08/2025 16:30
+ PERÍODO DE PARTICIPAÇÃO DA APURAÇÃO: 07/08/2025 09:00 a 31/08/2025 15:00
+ ENDEREÇO DA APURAÇÃO: Alameda Vicente Pinzon NÚMERO: 54 BAIRRO: Vila Olímpia
+ MUNICÍPIO: São Paulo UF: SP CEP: 04547-130
+ LOCAL DA APURAÇÃO: Cubo Itaú (local de realização do evento Hackaton)
+ PRÊMIOS
+ Quantidade
+ 6
+ Descrição
+ Valor R$
+ Valor Total R$
+ Ordem
+ Óculos Ray-Ban Meta
+ 8 - PREMIAÇÃO TOTAL:
+ Quantidade Total de Prêmios
+ 6
+ 3.000,00
+ 18.000,00
+ Valor total da Promoção R$
+ 1
+ 18.000,00
+ 9 - FORMA DE APURAÇÃO:
+ Avaliadores (“Juízes”)
+ A banca de Juízes será composta por profissionais indicados pela Qualcomm, com composição divulgada no site: (https://www.
+ qualcomm.com/developer/events/edge-ai-developer-hackathon)
+ Juízes devem informar conflitos de interesse à Qualcomm.
+ As decisões dos Juízes são soberanas e irrecorríveis.
+ Os Juízes poderão dar feedbacks sobre os projetos avaliados, todavia, os feedbacks serão opcionais para a banca de Juízes e não
+ obrigatórios.
+ Página  de 
+6
+ 3
+Critérios de Avaliação
+ As submissões serão avaliadas pelos Juízes com base nos seguintes critérios:
+ Impacto Real: Soluções que melhorem a vida das pessoas, aumentem a produtividade, facilitem a aprendizagem ou fortaleçam
+ negócios.
+ Aplicabilidade no Uso de Edge AI: Uso de tecnologias disponíveis (ex.: modelos, APIs, frameworks) com viabilidade prática.
+ Escalabilidade: Potencial de crescimento e adaptação.
+ Originalidade: Ideias inovadoras, não clones de soluções existentes.
+ Cada critério será pontuado de 0 a 4 (0 = mínima aderência, 4 = máxima aderência), com pesos iguais. A nota final será a média das
+ avaliações dos Juízes. A divulgação das notas ficará a critério da Qualcomm. Em caso de empate, os Juízes votarão para desempatar.
+ Etapas de Avaliação
+ Etapa Única (31/08/2025): Juízes avaliarão e classificarão os projetos com base nos critérios acima.
+ Os vencedores serão anunciados em 31/08/2025 durante o evento, por e-mail e redes sociais.
+ Premiação
+ A premiação será de 6 (seis) Ray-Ban Meta que serão entregues aos integrantes da equipe vencedora (valor aproximado de R$3.000,00 de
+ cada).
+ 10 - CRITÉRIOS DE DESCLASSIFICAÇÃO:
+ A Qualcomm pode desclassificar um vencedor se a entrega gerar conflito de interesse.
+ Impedidos de participarem da Promoção.
+ Não é elegível para participar ou ganhar essa Promoção:
+ funcionários (e seus familiares imediatos [cônjuge, pai, filho, irmão e seus respectivos cônjuges], independentemente de onde residam
+ ou que vivam no mesmo domicílio, sejam parentes ou não) da Promotora, sua controladora, afiliadas, subsidiárias, fornecedor(es) da
+ premiação, parceiros provedores de conteúdo, concorrentes de dispositivos móveis, distribuidores e agências de publicidade e
+ promoção envolvidas nesta Promoção (coletivamente , as "Partes da Promoção");
+ qualquer pessoa que atue no exercício de seu cargo, em caráter negocial, em busca de quaisquer interesses comerciais, seja
+ mediante pagamento de taxa ou de outra forma;
+ qualquer pessoa que participe da Promoção enquanto representa entidade governamental. A Promoção está sujeita a todas as leis e
+ regulamentos federais, estaduais e locais.
+ Os Participantes também não poderão utilizar-se de meios escusos para participar desta Promoção, e/ou de mecanismos que criem condições
+ de cadastramento irregular, desleais ou que atentem contra os objetivos e condições de participação previstas neste Regulamento, situações
+ essas que, quando identificadas, serão consideradas como infração aos termos do presente Regulamento, ensejando o impedimento da
+ participação e/ou o imediato cancelamento da inscrição do Participante, sem prejuízo, ainda, das medidas cabíveis e/ou ação de regresso a
+ ser promovida pela Promotora em face do infrator.
+ Os Participantes poderão ser excluídos automaticamente e a qualquer tempo da Promoção, em caso de descumprimento deste Regulamento,
+ bem como nos casos de suspeita de fraude e/ou prática de ato de má-fé, respondendo civil e criminalmente pelos atos praticados.
+ A Promotora não será responsável pela autenticidade dos dados cadastrais e das demais informações fornecidas pelos Participantes.
+ Não ocorrendo o atendimento de quaisquer dos requisitos, termos e condições previstos neste Regulamento, incluindo, mas não se limitando
+ à hipótese de prestação de informações inverídicas, incorretas, incompletas ou equivocadas, o Participante será automaticamente
+ desclassificado da Promoção.
+ Havendo a desclassificação de algum Participante, por qualquer motivo, este perderá, automaticamente, o direito aos prêmios,
+ independentemente de qualquer notificação, e o prêmio será destinado para o próximo Participante.
+ 11 - FORMA DE DIVULGAÇÃO DO RESULTADO:
+ Os vencedores serão anunciados em 31/08/2025 durante o evento, por e-mail e redes sociais.
+ Atualizações, resultados e informações serão comunicados pelos canais oficiais da Qualcomm, e-mail, redes sociais ou YouTube. Os
+ participantes devem acompanhar os canais oficiais.
+ 12 - ENTREGA DOS PRÊMIOS:
+ A premiação será de 6 (seis) Ray-Ban Meta serão entregues aos integrantes da equipe vencedora (valor aproximado de R$3.000,00, cada).
+ Os prêmios serão entregues de forma gratuita e sem ônus, aos vencedores, no prazo de até 30 dias, contados da divulgação dos  resultados e
+ mediante preenchimento recibo de entrega do prêmio e coleta de assinatura dos ganhadores.
+ Os prêmios são pessoais, intransferíveis e entregues “como estão”.
+ Os prêmios não poderão ser convertidos, total ou parcialmente, em dinheiro.Não há substituição ou transferência de prêmios, exceto a critério
+ da Qualcomm.
+ Todas as despesas necessárias à entrega do prêmio, inclusive pagamentos de taxas, impostos, contribuições previdenciárias e/ou
+ emolumentos serão custeados pela Promotora.
+ 13 - DISPOSIÇÕES GERAIS:
+ Comunicação
+ Atualizações, resultados e informações serão comunicados pelos canais oficiais da Qualcomm, e-mail, redes sociais ou YouTube.
+ Os participantes devem acompanhar os canais oficiais.
+ Página  de 
+6
+ 4
+Direitos e Obrigações
+ Exploração de Ideias: A Qualcomm não será obrigada a compensar participantes por ideias similares recebidas de outras fontes ou
+ desenvolvidas internamente. Os participantes renunciam a direitos de buscar medidas cautelares relacionadas à exploração de suas
+ ideias.
+ Sem Confidencialidade: As submissões não serão tratadas como confidenciais e podem ser divulgadas publicamente. Informações
+ confidenciais ou segredos comerciais não devem ser incluídos.
+ Isenção de Responsabilidade: A Qualcomm e suas afiliadas (“Partes Liberadas”) não serão responsáveis por danos, lesões, perdas,
+ falhas técnicas ou problemas de infraestrutura que afetem a participação.
+ Indenização: Os participantes indenizarão as Partes Liberadas por custos ou danos decorrentes de reclamações de terceiros
+ relacionadas aos Materiais do Participante.
+ Conformidade com as Leis
+ Os participantes devem cumprir leis aplicáveis, incluindo anticorrupção, exportação e sanções econômicas. No Cubo Itaú, devem
+ seguir as regras do local, sob pena de desclassificação.
+ Dados pessoais serão coletados e usados conforme a política de privacidade da Qualcomm https://www.qualcomm.com/site/privacy.
+ Divisibilidade: Se uma disposição for inválida, as demais permanecem válidas.
+ Lei Aplicável e Foro: O Hackathon é regido pelas leis do Brasil, com Foro exclusivo em São Paulo, SP.
+ Casos Omissos: Serão resolvidos pela Qualcomm, cujas decisões são irrecorríveis.
+ Aceitação: A inscrição implica aceitação integral deste Regulamento.
+ Local de exibição dos prêmios: Haverá imagens ilustrativas dos prêmios no site (https://www.qualcomm.com/developer/events/edge-ai
+developer-hackathon) e nos materiais de divulgação.
+ Comprovação da propriedade dos prêmios
+ : A Promotora comprovará a propriedade dos prêmios através de notas fiscais e/ou declaração
+ de fornecimento assinada pelo fornecedor deles, em até oito dias, antes da data de apuração dos resultados.
+ A Promotora não se responsabilizará por eventuais prejuízos que os Participantes possam ter, oriundos da participação na Promoção, da
+ aceitação do prêmio, ou ainda, de situações que estejam fora do controle da Promotora, contanto que não fique demonstrada a
+ responsabilidade da Promotora.
+ Canais e formas de divulgação institucional pela mídia
+ . A divulgação da promoção, para o conhecimento de suas condições, pelos
+ Participantes, realizar-se-á por meio das redes sociais e outras mídias, a critério da Promotora.
+ O regulamento completo estará disponível no endereço eletrônico site (https://www.qualcomm.com/developer/events/edge-ai-developer
+hackathon).
+ A Promotora solicita dispensa de aposição do número do certificado fazendo-o constar permanentemente no Regulamento que estará
+ disponível no endereço eletrônico site (https://www.qualcomm.com/developer/events/edge-ai-developer-hackathon)
+ As dúvidas e controvérsias oriundas dos consumidores Participantes da promoção comercial serão, primeiramente, dirimidas pela Promotora,
+ e persistindo-as, estas serão submetidas à SPA/MF e/ou aos órgãos integrantes do Sistema Nacional de Defesa do Consumidor.
+ Autorização de uso dos direitos de personalidade dos Participantes do Hackathon em relação à Promoção
+ . Os Participantes desta
+ Promoção autorizam, sem quaisquer ônus, e sem qualquer necessidade de aprovação prévia do conteúdo pelo Participante, a Promotora a
+ utilizar, no Brasil e no exterior, suas imagens, nomes, depoimento e/ou vozes, gratuitamente, em fotos, cartazes, filmes, jornais, revistas,
+ faixas, outdoors, televisão, rádio, tele mídia, cinema, mala-direta, mídia exterior, materiais de ponto de venda, Internet, rede sociais, bem como
+ em qualquer tipo de mídia e peças institucionais, promocionais e/ou publicitárias para a divulgação do Hackathon, no prazo de até 01 (um) ano
+ após o término da Promoção, contado da data de encerramento da Promoção, em caráter irrevogável, irretratável e universal, não
+ significando, implicando ou resultando em qualquer obrigação de divulgação, nem de pagamento pela Promotora ao contemplado. O uso feito
+ pela Promotora ao tempo da Promoção será mantido nos históricos de internet da Promotora e empresas do seu grupo mesmo após o término
+ da Promoção.
+ As autorizações descritas acima não implicam em qualquer obrigação de divulgação ou de pagamento de qualquer quantia por parte da
+ Promotora aos ganhadores e/ou aos participantes.
+ A simples participação na presente Promoção implicará no total e integral reconhecimento das condições e aceitação automática e irrestrita de
+ todas as disposições deste Regulamento, bem como, presumir-se-á a condição de que o Participante premiado não possui impedimentos
+ fiscal, legal ou outro que o impeça de receber e/ou usufruir o prêmio ganho.
+ Prestação de Contas. Após a entrega dos prêmios, a prestação de contas da Promoção encerrada será realizada pela procuradora nomeada
+ pela Promotora e dentro do prazo estabelecido pela legislação.
+ PROTEÇÃO DE DADOS:
+ Os Participantes da Promoção ficam cientes que a empresa Promotora irá fazer o tratamento de seus dados pessoais, podendo, inclusive,
+ compartilhá-los, somente quando necessário, com os parceiros envolvidos na execução da Promoção.
+ A Promotora declara cumprir a legislação relativa à privacidade e proteção de dados pessoais em todos os atos referentes à execução do
+ presente Regulamento. Para saber mais sobre como será o tratamento de dados na Promoção, recomendamos a leitura da Política de
+ Privacidade anteriormente ao envio dos conteúdos e que os Participantes somente submetam seus dados se estiverem de acordo com dita
+ política. A Política de Privacidade poderá ser acessada no site 
+www.qualcomm.com/site/privacy
+ .
+ O tratamento dos Dados Pessoais será realizado de acordo com as bases legais previstas na LGPD. Os dados necessários à participação
+ dessa Promoção serão coletados pelos seguintes motivos:
+ Para cumprir com as obrigações legais da Promotora;
+ Para cumprir com obrigações contratuais da Promotora;
+ Para atendermos aos interesses legítimos da Promotora;
+ Pela obtenção consentimento específico do Participante (quando necessário) e/ou
+ Para eventual exercício de defesa em procedimentos administrativos ou judiciais.
+ Página  de 
+6
+ 5
+Caso o Participante queira exercer algum dos seus direitos relativos a seus dados pessoais, entre em contato com o contato encarregado pelo
+ tratamento de dados pessoais da Promotora, que pode ser contatado pelo e-mail 
+privacy@qualcomm.com
+ .
+ Os dados e informações coletados estarão armazenados em ambiente seguro, observado o estado da técnica disponível, e somente poderão
+ ser acessados por pessoas qualificadas e previamente autorizadas, em observância à legislação em vigor.
+ 14 - TERMO DE RESPONSABILIDADE
+ Poderá participar da promoção qualquer consumidor que preencha os requisitos estipulados no regulamento da campanha autorizada;
+ Os prêmios não poderão ser convertidos em dinheiro;
+ É vedada a apuração por meio eletrônico;
+ Os prêmios serão entregues em até 30 dias da data da apuração/sorteio, sem qualquer ônus aos contemplados
+ Quando o prêmio sorteado, ganho em concurso ou conferido mediante vale-brinde, não for reclamado no prazo de cento e oitenta (180) dias,
+ contados, respectivamente, da data do sorteio, da apuração do resultado do concurso ou do término do prazo da promoção, caducará o direito
+ do respectivo titular e o valor correspondente será recolhido, pela empresa autorizada, ao Tesouro Nacional, como renda da União, no prazo
+ de quarenta e cinco (45) dias;
+ Em caso de promoções com participação de menor de idade, sendo este contemplado, deverá, no ato da entrega do prêmio, ser representado
+ por seu responsável legal; à exceção das promoções comerciais realizadas por concessionária ou permissionária de serviço de radiodifusão,
+ nos termos do artigo 1º-A, § 3º, da Lei 5.768, de 20 de dezembro de 1971;
+ A divulgação da imagem dos contemplados poderá ser feita até um ano após a apuração da promoção comercial;
+ As dúvidas e controvérsias oriundas de reclamações dos participantes serão, primeiramente, dirimidas pela promotora, persistindo-as, estas
+ deverão ser submetidas à SPA/MF;
+ Os órgãos locais de defesa do consumidor receberão as reclamações devidamente fundamentadas;
+ A prestação de contas deverá ser realizada no prazo máximo de trinta dias após a data de prescrição dos prêmios sob pena de
+ descumprimento do plano de distribuição de prêmios;
+ O regulamento deverá ser afixado em lugar de ampla visibilidade e se apresentar em tamanho e em grafia que viabilizem a compreensão e
+ visualização por parte do consumidor participante da promoção comercial;
+ Além dos termos acima, a promoção comercial deverá obedecer às condições previstas na Lei nº 5.768, de 1971, no Decreto nº 70.951, de
+ 1972, Portaria SEAE nº 7.638, de 2022, Portaria MF nº 67, de 2017, Portaria SECAP nº 20.749 de 2020, e em atos que as complementarem.
+ Para as modalidades "Sorteio" e "Assemelhada a Sorteio" a empresa deverá anexar a Lista de Participantes na aba "Apurações", contendo
+ nomes e números da sorte distribuídos, após o término de cada período de participação e antes da extração da Loteria. O arquivo deverá ser
+ no formato .csv, .xls ou .zip e cada arquivo poderá ter até 250 MB.
+ A infringência às cláusulas do Termo de Responsabilidade e do Regulamento constituem descumprimento do plano de operação e ensejam as
+ penalidade previstas no artigo 13 da Lei nº. 5.768, de 1971.
+ Documento assinado eletronicamente por Antonia Alberlania Ferreira Rufino, Assistente Técnico(a), em 05/08/2025 às 17:
+ 44, conforme horário oficial de Brasília, com fundamento no art. 6o, § 1o, do Decreto no 8.539, de 8 de outubro de 2015.
+ A autenticidade deste documento pode ser conferida no site: https://scpc.seae.fazenda.gov.br/scpc
+ /consulta_codigo_autenticacao.jsf, informando o código verificador TZL.KJC.HNH
+ Página  de 
+6
+ 6
+ANEXO I 
+CÓDIGO DE CONDUTA 
+O Hackathon é dedicado a fornecer um ambiente seguro e confortável e uma experiência livre 
+de assédio para todos, independentemente de: 
+• Gênero 
+• Identidade e expressão de gênero 
+• Idade 
+• Orientação sexual 
+• Deficiência 
+• Aparência física 
+• Raça 
+• Etnia 
+• Nacionalidade 
+• Religião 
+• Visões políticas 
+• Participações anteriores em hackathons (ou falta de)  
+• Experiência em informática (ou falta de)  
+• Linguagem de programação ou tech stack  
+Não será tolerado assédio aos participantes do Hackathon de qualquer forma.  
+Linguagem, imagens e assédio de cunho sexual não são apropriados em nenhum local do 
+Hackathon, o que inclui, mas não está limitado a(à): 
+• Hacks 
+• Palestras, apresentações ou demonstrações 
+• Oficinas 
+• Quaisquer outras etapas, partes ou fases associadas ao Hackathon 
+• Redes sociais 
+• Qualquer outra mídia ou veículo, seja online ou não online 
+Os participantes do Hackathon que violarem essas regras podem ser sancionados ou expulsos 
+do Hackathon sem reembolso (se aplicável), a critério dos organizadores do Hackathon.  
+O assédio inclui comentários verbais ofensivos relacionados a gênero, identidade e expressão 
+de gênero, idade, orientação sexual, deficiência, aparência física, tamanho do corpo, raça, etnia, 
+nacionalidade, religião ou opiniões políticas, imagens sexuais em espaços públicos, intimidação 
+deliberada, perseguição, stalking, fotografia ou gravação de áudio/vídeo sem consentimento, 
+interrupção reiterada às falas dos outros participantes ou outros eventos, contato físico 
+inadequado e assédio sexual ou moral. 
+A fotografia é incentivada, mas os outros participantes devem ter a oportunidade de optar por 
+não serem fotografados. Se eles se opuserem a tirar sua fotografia, o participante que deseja 
+tirar a foto, deve atender a esse pedido. É inadequado tirar fotos em contextos onde as pessoas 
+têm uma expectativa razoável de privacidade (e.g., em banheiros ou onde os participantes estão 
+dormindo, etc.). O mesmo se aplica a vídeos. 
+É esperado que os participantes solicitados a interromper qualquer comportamento de assédio 
+cumpram imediatamente com a solicitação feita. 
+Os hacks e quaisquer atividades criadas para o Hackathon estão igualmente sujeitos a este 
+Código. 
+Prestadores de serviço, voluntários, subcontratados e parceiros também estão sujeitos a este 
+Código. Não serão utilizadas imagens ou outros materiais de cunho sexualizados. Não será 
+criado 
+um ambiente sexualizado por estas partes, nem haverá o uso de 
+roupas/uniformes/fantasias sexualizadas. 
+Em caso de assédio, ou caso haja a percepção de uma situação de assédio, ou caso haja 
+qualquer outra preocupação associada com esse Código, o participante deverá entrar em contato 
+com um membro da equipe do Hackathon imediatamente. 
+A equipe do Hackathon ajudará os participantes com o contato com qualquer segurança local ou 
+para garantir a aplicação das leis locais, de maneira a fornecer escoltas ou ajudar aqueles que 
+sofrem assédio a se sentirem seguros durante o Hackathon.  
+Se um participante se envolver em comportamento de assédio, os organizadores do Hackathon 
+podem tomar as medidas que considerarem apropriadas. Isso inclui avisar o infrator, expulsão 
+do Hackathon sem reembolso (se aplicável) ou denunciar seu comportamento às autoridades 
+locais. 
+Esse Código deve ser seguido em locais do Hackathon e workshop, como também em eventos 
+sociais relacionados ao Hackathon. 
