@@ -135,6 +135,19 @@ export default function App() {
     webviewRef.current?.reload?.();
   }
 
+  // Home: vai para Google (ajuste se quiser outra home)
+  function goHome() {
+    const url = 'https://www.google.com';
+    setTabs(prev => {
+      const next = [...prev];
+      if (next[currentTabIndex]) {
+        next[currentTabIndex] = { ...next[currentTabIndex], url, title: getTabTitle(url) };
+      }
+      return next;
+    });
+    setAddress(url);
+  }
+
   useEffect(() => {
     const onKey = (event) => {
       if (!(event.ctrlKey || event.metaKey)) return;
@@ -185,6 +198,7 @@ export default function App() {
         showAgent={showAgent}
         onToggleAgent={() => setShowAgent(v => !v)}
         urlInputRef={urlInputRef}
+        onHome={goHome}
       />
 
       <ContentArea

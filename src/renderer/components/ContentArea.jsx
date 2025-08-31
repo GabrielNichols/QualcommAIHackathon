@@ -9,6 +9,27 @@ export default function ContentArea({ showAgent, webviewRef, src }) {
   const [showHistory, setShowHistory] = useState(false);
   const endRef = useRef(null);
 
+  // Animações
+  const [chatChanged, setChatChanged] = useState(false);
+  const [panelJustOpened, setPanelJustOpened] = useState(false);
+
+  const triggerChatChange = () => setChatChanged(true);
+
+  useEffect(() => {
+    if (!chatChanged) return;
+    const t = setTimeout(() => setChatChanged(false), 500);
+    return () => clearTimeout(t);
+  }, [chatChanged]);
+
+  useEffect(() => {
+    if (!showAgent) return;
+    setPanelJustOpened(true);
+    const t = setTimeout(() => setPanelJustOpened(false), 250);
+    // também anima a área de chat ao abrir o Agent (reforça a mudança de contexto)
+    triggerChatChange();
+    return () => clearTimeout(t);
+  }, [showAgent]);
+
   // gera 300 partículas do orb uma vez
   const orbParticles = useMemo(() => {
     const total = 500;
@@ -38,6 +59,8 @@ export default function ContentArea({ showAgent, webviewRef, src }) {
     });
     setCurrentSessionId(s.id);
     setMessages(msgs);
+    // animação de troca de chat ao criar "Nova"
+    triggerChatChange();
   };
 
   // carrega histórico do localStorage uma vez
@@ -112,7 +135,7 @@ export default function ContentArea({ showAgent, webviewRef, src }) {
       </div>
 
       {showAgent && (
-        <div className="agent-panel">
+        <div className={`agent-panel ${panelJustOpened ? 'agent-enter' : ''}`}>
           <div className="agent-header">
             <span>Agent</span>
             <div className="agent-head-actions">
@@ -135,7 +158,7 @@ export default function ContentArea({ showAgent, webviewRef, src }) {
           </div>
           <div className="agent-body">
             {/* Lista de mensagens */}
-            <div className="chat-messages">
+            <div className={`chat-messages ${chatChanged ? 'chat-changed' : ''}`}>
               {messages.map((m, i) => (
                 <div key={i} className={`chat-message ${m.role === 'user' ? 'user' : 'agent'}`}>
                   <div className="chat-bubble">
