@@ -9,9 +9,10 @@ if (started) {
 const createWindow = () => {
   
   const mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
     autoHideMenuBar:true,
+    fullscreen: true,
+    fullscreenable: true,
+    show: false, // cria oculta para evitar "flash" antes do fullscreen
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       webviewTag:true,
@@ -19,7 +20,17 @@ const createWindow = () => {
     },
   });
   //bro seriously 
-mainWindow.setAlwaysOnTop(false,'screen')
+  mainWindow.setAlwaysOnTop(false,'screen');
+
+  // Garante maximize + fullscreen antes de mostrar
+  mainWindow.once('ready-to-show', () => {
+    try {
+      mainWindow.maximize();
+      // mainWindow.setFullScreen(true);
+    } finally {
+      mainWindow.show();
+    }
+  });
 
   if (MAIN_WINDOW_VITE_DEV_SERVER_URL) {
     mainWindow.loadURL(MAIN_WINDOW_VITE_DEV_SERVER_URL);
