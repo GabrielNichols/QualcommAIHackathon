@@ -7,23 +7,14 @@ export async function summarizeEconomicNews(text) {
     '',
     'Texto da página:',
     text || '(sem conteúdo)',
+    '',
+    'Saída esperada:',
+    '- Bullet points objetivos com títulos curtos',
   ].join('\n');
 
-  const body = {
-    contents: [
-      {
-        role: 'user',
-        parts: [{ text: prompt }],
-      },
-    ],
-    generationConfig: {
-      temperature: 0.3,
-      maxOutputTokens: 600,
-    },
-  };
+  const data = await window.api.localChat({ message: prompt });
 
-  const data = await window.api.geminiGenerate(body);
-  const out =
-    data?.candidates?.[0]?.content?.parts?.map((p) => p.text).join('') || '';
-  return out.trim();
+  // O servidor local retorna { response, conversation_id, processing_time_seconds, timestamp }
+  const out = data?.response || '';
+  return String(out).trim();
 }

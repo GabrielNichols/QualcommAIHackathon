@@ -67,7 +67,7 @@ class LLMEngine:
                 'min_length': gen_kwargs.get('min_length', 0),
                 'top_p': gen_kwargs.get('top_p', 0.9),
                 'top_k': gen_kwargs.get('top_k', 50),
-                'temperature': gen_kwargs.get('temperature', 0.7),
+                'temperature': gen_kwargs.get('temperature', 0.3),
                 'repetition_penalty': gen_kwargs.get('repetition_penalty', 1.0),
                 'batch_size': 1
             }

@@ -1,38 +1,29 @@
 const { contextBridge, ipcRenderer } = require('electron');
 
-// Coloque sua chave aqui
-const GEMINI_API_KEY = 'COLOQUE_SUA_CHAVE_AQUI';
-
 contextBridge.exposeInMainWorld('api', {
     newWindow: () => {
         ipcRenderer.send('new-window');
     },
     saveHTML: (html, suggestedName) => ipcRenderer.invoke('save-html', html, suggestedName),
 
-    // Chamada à API do Gemini (usa a env GEMINI_API_KEY)
-    geminiGenerate: async (body) => {
-        const key =
-          (typeof GEMINI_API_KEY === 'string' && "AIzaSyDriQrhWKfiXk8H942gENbBNxaCpBTixlg") ||
-          process.env.GEMINI_API_KEY ||
-          process.env.VITE_GEMINI_API_KEY ||
-          process.env.GOOGLE_AI_STUDIO_API_KEY;
+  // Chamada ao servidor local FastAPI (server_quick_start.py)
+  localChat: async (payload) => {
+    const body =
+      payload && typeof payload === 'object'
+      ? payload
+      : { message: String(payload ?? '') };
 
-        if (!key) {
-          throw new Error('GEMINI_API_KEY ausente. Defina em src/preload.js.');
-        }
+    const res = await fetch('http://localhost:8080/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+    });
 
-        const res = await fetch(
-          `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${key}`,
-          {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(body),
-          }
-        );
-        if (!res.ok) {
-          const text = await res.text().catch(() => '');
-          throw new Error(`Gemini request failed: ${res.status} ${text}`);
-        }
-        return res.json();
-    },
+    if (!res.ok) {
+      const text = await res.text().catch(() => '');
+      throw new Error(`Local LLM request failed: ${res.status} ${text}`);
+    }
+
+    return res.json();
+  },
 });

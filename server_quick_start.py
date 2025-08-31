@@ -148,7 +148,10 @@ Responda de forma direta e útil:"""
             _llm_engine.generate_text,
             prompt=prompt,
             max_length=512,
-            temperature=0.7
+            temperature=0.2,
+            do_sample=False,
+            top_p=0.9,
+            repetition_penalty=1.05
         )
 
         processing_time = asyncio.get_event_loop().time() - start_time

@@ -176,16 +176,16 @@ export default function App() {
         wv.executeJavaScript(`(() => {
           const raw = document.body?.innerText || '';
           return raw
-            .replace(/[\\t\\r]+/g, ' ')
-            .split('\\n')
-            .map(l => l.trim().replace(/\\s{2,}/g, ' '))
+            .replace(/[\t\r]+/g, ' ')
+            .split('\n')
+            .map(l => l.trim().replace(/\s{2,}/g, ' '))
             .filter(l => l.length > 0)
-            .join('\\n');
+            .join('\n');
         })()`),
         wv.executeJavaScript('({ url: location.href, title: document.title })'),
       ]);
 
-      const capture = {
+  const capture = {
         url: meta?.url ?? (tabs[currentTabIndex]?.url),
         title: meta?.title ?? (tabs[currentTabIndex]?.title),
         text,

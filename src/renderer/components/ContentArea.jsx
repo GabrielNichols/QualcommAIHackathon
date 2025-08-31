@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect, useMemo } from 'react';
 import { handleOpenSiteRequest } from '../agent/agentActions.js';
-import { summarizeEconomicNews } from '../agent/geminiClient.js';
+import { summarizeEconomicNews, chat } from '../agent/llmClient.js';
 
 export default function ContentArea({ showAgent, webviewRef, src, openUrlInNewTab, capturePage }) {
   const [messages, setMessages] = useState([]);
@@ -170,18 +170,30 @@ export default function ContentArea({ showAgent, webviewRef, src, openUrlInNewTa
           }
           const cleanup = () => {
             wv.removeEventListener('did-finish-load', onLoad);
+            wv.removeEventListener('dom-ready', onDomReady);
             wv.removeEventListener('did-fail-load', onFail);
           };
           const onLoad = () => {
             cleanup();
             resolve();
           };
-          const onFail = (_e) => {
+          const onDomReady = () => {
+            // Considera DOM pronto como suficiente para captura/resumo
             cleanup();
-            reject(new Error('Falha ao carregar a página.'));
+            resolve();
+          };
+          const onFail = (_event, errorCode, _errorDescription, _validatedURL, isMainFrame) => {
+            // Ignore falhas de sub-recurso/iframe; só rejeite se falha for do frame principal
+            if (isMainFrame) {
+              cleanup();
+              const code = typeof errorCode === 'number' ? ` (código ${errorCode})` : '';
+              reject(new Error(`Falha ao carregar a página${code}.`));
+            }
           };
           wv.addEventListener('did-finish-load', onLoad, { once: true });
-          wv.addEventListener('did-fail-load', onFail, { once: true });
+          wv.addEventListener('dom-ready', onDomReady, { once: true });
+          // não use { once: true } aqui para continuar capturando sub-falhas sem remover listener
+          wv.addEventListener('did-fail-load', onFail);
         };
         waitMount();
       });
@@ -202,7 +214,7 @@ export default function ContentArea({ showAgent, webviewRef, src, openUrlInNewTa
 
     // Detecta URL para acionar o agente
     const urlMatch = value.match(/https?:\/\/[^\s)]+/i);
-    if (urlMatch && openUrlInNewTab && capturePage) {
+  if (urlMatch && openUrlInNewTab && capturePage) {
       const url = urlMatch[0];
 
       // feedback imediato
@@ -229,12 +241,28 @@ export default function ContentArea({ showAgent, webviewRef, src, openUrlInNewTa
             return withSummary;
           });
         } catch (e) {
-          const reason =
-            (e?.message || '').includes('GEMINI_API_KEY')
-              ? 'Defina GEMINI_API_KEY em src/preload.js e reinicie o app.'
-              : (e?.message || '');
+          const reason = (e?.message || '');
           setMessages((prev) => {
             const withErr = [...prev, { role: 'agent', text: `Falha ao processar o site. ${reason}`.trim() }];
+            upsertCurrentSessionWithMessages(withErr);
+            return withErr;
+          });
+        }
+      })();
+    } else {
+      // Chat geral com LLM local para perguntas que não são URLs
+      (async () => {
+        try {
+          const answer = await chat(value);
+          setMessages((prev) => {
+            const withAns = [...prev, { role: 'agent', text: answer }];
+            upsertCurrentSessionWithMessages(withAns);
+            return withAns;
+          });
+        } catch (e) {
+          const reason = (e?.message || '');
+          setMessages((prev) => {
+            const withErr = [...prev, { role: 'agent', text: `Falha ao responder. ${reason}`.trim() }];
             upsertCurrentSessionWithMessages(withErr);
             return withErr;
           });
