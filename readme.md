@@ -1,3 +1,5 @@
+![web-browser](https://github.com/user-attachments/assets/c9462b4e-3431-484d-be5e-f56692990baa)
+
 # Agentic Browser — Itaú + Qualcomm (Projeto completo)
 
 Navegador agentic para analistas do Itaú em PCs Copilot+ com Snapdragon (X Plus/X Elite). A IA é nativa no browser: o agente enxerga o DOM, raciocina sobre o contexto das páginas e age (abrir abas, clicar, preencher, extrair e evidenciar). A arquitetura combina backend Python com LangGraph (orquestração multi‑agentes) e frontend em React + Electron, que expõe ações do navegador como tools via MCP (openTab, find, click, fill, extract, screenshot) — sem Playwright.
