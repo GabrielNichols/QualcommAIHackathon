@@ -1,6 +1,7 @@
 import { app, BrowserWindow , ipcMain, dialog } from 'electron';
 import path from 'node:path';
 import started from 'electron-squirrel-startup';
+import 'dotenv/config'; // carrega .env para process.env
 
 if (started) {
   app.quit();

@@ -157,7 +157,17 @@ export default function App() {
     setAddress(url);
   }
 
-  // Captura o texto (apenas) da página ativa; se save=true poderia salvar como .txt (desativado no UI)
+  // Abre URL em nova aba e alterna para ela
+  function openUrlInNewTab(url) {
+    setTabs((prev) => {
+      const next = [...prev, { title: getTabTitle(url), url }];
+      return next;
+    });
+    setCurrentTabIndex((idx) => idx + 1);
+    setAddress(url);
+  }
+
+  // Captura texto da página e retorna o objeto de captura
   async function capturePage({ save = false } = {}) {
     const wv = webviewRef.current;
     if (!wv) return;
@@ -165,7 +175,6 @@ export default function App() {
       const [text, meta] = await Promise.all([
         wv.executeJavaScript(`(() => {
           const raw = document.body?.innerText || '';
-          // normaliza: tira espaços extras, remove linhas vazias e colapsa quebras
           return raw
             .replace(/[\\t\\r]+/g, ' ')
             .split('\\n')
@@ -176,28 +185,22 @@ export default function App() {
         wv.executeJavaScript('({ url: location.href, title: document.title })'),
       ]);
 
-      // Log no console somente com TEXTO
-      console.groupCollapsed('[Webview] TEXTO capturado');
-      console.log('URL:', meta?.url);
-      console.log('Título:', meta?.title);
-      console.log('Texto:');
-      console.log(text);
-      console.groupEnd();
-
       const capture = {
-        url: meta?.url ?? activeTab.url,
-        title: meta?.title ?? activeTab.title,
-        text,              // apenas texto
+        url: meta?.url ?? (tabs[currentTabIndex]?.url),
+        title: meta?.title ?? (tabs[currentTabIndex]?.title),
+        text,
         capturedAt: Date.now(),
       };
       localStorage.setItem('lastPageCapture', JSON.stringify(capture));
 
-      // salvar em arquivo está desativado no UI; mantido para compatibilidade futura
+      // opcional: salvar em arquivo (mantido desativado)
       if (save) {
-        // exemplo (desativado): await window.api?.saveHTML?.(text, `${safe}.txt`);
+        // await window.api?.saveHTML?.(text, `${safe}.txt`);
       }
+      return capture;
     } catch (e) {
       console.error('Falha ao capturar texto da página:', e);
+      return null;
     }
   }
 
@@ -258,6 +261,8 @@ export default function App() {
         showAgent={showAgent}
         webviewRef={webviewRef}
         src={activeTab.url || ''}
+        openUrlInNewTab={openUrlInNewTab}
+        capturePage={capturePage}
       />
     </div>
   );
