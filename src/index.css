@@ -127,26 +127,97 @@ body {
   display: flex;
   align-items: center;
   gap: 8px;
+  position: relative;
 }
 
-.browser-menu {
+/* Backdrop do menu (fecha ao clicar fora) */
+.menu-backdrop {
+  position: fixed;
+  inset: 0;
+  background: transparent;
+  z-index: 20;
+}
+
+/* Dropdown do menu */
+.app-menu {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 8px);
+  width: 240px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  box-shadow: 0 12px 32px rgba(2, 6, 23, 0.12);
+  padding: 8px;
+  z-index: 21;
+}
+
+.menu-title {
+  padding: 6px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #64748b;
+  text-transform: uppercase;
+}
+
+.menu-item {
+  width: 100%;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 10px;
+  border-radius: 8px;
   background: none;
   border: none;
+  color: #334155;
   cursor: pointer;
-  padding: 8px;
-  border-radius: 8px;
-  transition: all 0.2s ease;
-  color: #64748b;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
+  text-align: left;
+  transition: background 0.15s ease, color 0.15s ease;
 }
 
-.browser-menu:hover {
+.menu-item:hover {
+  background: #f1f5f9;
+  color: #0f172a;
+}
+
+.menu-sep {
+  height: 1px;
   background: #e2e8f0;
-  color: #475569;
+  margin: 6px 4px;
+  border-radius: 1px;
+}
+
+/* Toggle switch */
+.switch { cursor: pointer; }
+.switch input { display: none; }
+.switch-ui {
+  position: relative;
+  width: 38px;
+  height: 22px;
+  background: #cbd5e1;
+  border-radius: 9999px;
+  transition: background 0.2s ease;
+  flex-shrink: 0;
+}
+.switch-ui::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 18px;
+  height: 18px;
+  border-radius: 9999px;
+  background: #ffffff;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+  transition: transform 0.2s ease;
+}
+.switch input:checked + .switch-ui {
+  background: #22c55e;
+}
+.switch input:checked + .switch-ui::after {
+  transform: translateX(16px);
 }
 
 /* Barra de navegação */
@@ -830,3 +901,228 @@ body {
     animation: none;
   }
 }
+
+/* -------------------- Dark mode (overrides básicos) -------------------- */
+body.dark {
+  background: linear-gradient(135deg, #0b1220 0%, #0a0f1d 100%);
+  color: #e2e8f0;
+}
+
+body.dark .browser-window { background: #0b1220; }
+body.dark .tab-bar,
+body.dark .navigation-bar {
+  background: #0e1628;
+  border-bottom-color: #24314d;
+}
+
+body.dark .tabs-container::-webkit-scrollbar-thumb { background: #334155; }
+body.dark .tab {
+  background: #1b2437;
+  color: #cbd5e1;
+}
+body.dark .tab:hover:not(.active) {
+  background: #22304b;
+  color: #e2e8f0;
+}
+body.dark .tab.active {
+  background: #0e1628;
+  color: #e2e8f0;
+  border-color: #24314d;
+  border-bottom-color: #0e1628;
+}
+
+body.dark .add-tab-btn,
+body.dark .browser-menu { color: #cbd5e1; }
+body.dark .browser-menu:hover { background: #16213a; color: #ffffff; }
+
+body.dark .address-bar {
+  background: #0e1628;
+  border-color: #24314d;
+}
+body.dark .url-input { color: #e2e8f0; }
+body.dark .url-input::placeholder { color: #94a3b8; }
+
+body.dark .content-area { background: #0b1220; }
+body.dark .agent-panel { background: #0e1628; border-left-color: #24314d; }
+body.dark .agent-header { background: #0e1628; border-bottom-color: #24314d; color: #e2e8f0; }
+body.dark .agent-body { color: #cbd5e1; }
+
+body.dark .nav-btn,
+body.dark .chat-icon-btn {
+  background: #0e1628;
+  border-color: #24314d;
+  color: #94a3b8;
+}
+body.dark .nav-btn:hover,
+body.dark .chat-icon-btn:hover {
+  background: #16213a;
+  border-color: #334155;
+  color: #e2e8f0;
+}
+
+body.dark .bookmark-btn { color: #cbd5e1; }
+
+body.dark .chat-message.agent .chat-bubble {
+  background: #0e1628;
+  border-color: #24314d;
+  color: #e2e8f0;
+}
+
+/* Menu em dark */
+body.dark .app-menu {
+  background: #0e1628;
+  border-color: #24314d;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.4);
+}
+body.dark .menu-title { color: #94a3b8; }
+body.dark .menu-item { color: #e2e8f0; }
+body.dark .menu-item:hover { background: #18233a; color: #ffffff; }
+body.dark .menu-sep { background: #24314d; }
+body.dark .switch-ui { background: #334155; }
+
+/* Deixar os 3 pontinhos sem aparência de botão */
+#new-window-button {
+  background: transparent;
+  border: none;
+  padding: 0;
+  width: auto;
+  height: auto;
+  border-radius: 0;
+  color: #64748b;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+#new-window-button:hover {
+  background: transparent; /* sem hover de botão */
+  color: #64748b;          /* mantém a cor */
+}
+
+/* Dark mode: aplicar também ao webview (tela em branco/blank) */
+body.dark #webview {
+  background: #0b1220;
+}
+
+/* Ajuste de cor do ícone no dark mode */
+body.dark #new-window-button {
+  color: #cbd5e1;
+}
+body.dark #new-window-button:hover {
+  color: #cbd5e1;
+}
+
+/* Dark mode: overlay de áudio (orb) */
+body.dark .orb-overlay {
+  background: #0b1220;
+}
+
+body.dark .orb-btn {
+  background: #0e1628;
+  border-color: #24314d;
+  color: #e2e8f0;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.35);
+}
+
+body.dark .orb-btn:hover {
+  background: #16213a;
+  border-color: #334155;
+  color: #ffffff;
+}
+
+/* o ícone do botão primário (mic) no dark */
+body.dark .orb-btn.primary svg {
+  color: #e5e7eb;
+}
+
+/* opcional: borda/edge da área do orb no dark */
+body.dark .orb-stage {
+  box-shadow: 0 12px 32px rgba(0,0,0,0.4);
+  background: transparent; /* mantém o foco nas partículas */
+}
+
+/* --------- Dark mode: botões e inputs (sem branco “bruto”) --------- */
+
+/* Composer e input do chat */
+body.dark .chat-compose {
+  background: #0e1628;
+  border-color: #24314d;
+}
+body.dark .chat-input {
+  color: #e2e8f0;
+}
+body.dark .chat-input::placeholder {
+  color: #94a3b8;
+}
+
+/* Botão enviar (remove preenchimento branco no dark) */
+body.dark .chat-send-btn {
+  color: #cbd5e1;
+  background:
+    linear-gradient(#0e1628, #0e1628) padding-box,
+    conic-gradient(from var(--angle), #ff4545, #00ff99, #006aff, #ff0095, #ff4545) border-box;
+}
+body.dark .chat-send-btn:hover {
+  background:
+    linear-gradient(#16213a, #16213a) padding-box,
+    conic-gradient(from var(--angle), #ff4545, #00ff99, #006aff, #ff0095, #ff4545) border-box;
+}
+
+/* Botões pequenos do Agent */
+body.dark .agent-small-btn {
+  background: #0e1628;
+  border-color: #24314d;
+  color: #cbd5e1;
+}
+body.dark .agent-small-btn:hover {
+  background: #16213a;
+  border-color: #334155;
+  color: #ffffff;
+}
+
+/* Hover de ícones/atalhos */
+body.dark .bookmark-btn:hover {
+  background: rgba(148, 163, 184, 0.12);
+  color: #e2e8f0;
+}
+body.dark .add-tab-btn:hover {
+  background: #16213a;
+  color: #e2e8f0;
+}
+
+/* Painel de histórico (lado direito) */
+body.dark .chat-history-panel {
+  background: #0e1628;
+  border-left-color: #24314d;
+  box-shadow: -6px 0 16px rgba(0,0,0,0.35);
+}
+body.dark .history-header {
+  background: #0e1628;
+  border-bottom-color: #24314d;
+  color: #e2e8f0;
+}
+body.dark .history-close {
+  background: #0e1628;
+  border-color: #24314d;
+  color: #cbd5e1;
+}
+body.dark .history-close:hover {
+  background: #16213a;
+  border-color: #334155;
+  color: #ffffff;
+}
+body.dark .history-item {
+  background: #0f1b32;
+  border-color: #24314d;
+  color: #e2e8f0;
+}
+body.dark .history-item:hover {
+  background: #16213a;
+  border-color: #334155;
+  color: #ffffff;
+}
+body.dark .history-item.active {
+  background: #16213a;
+  border-color: #334155;
+}
+body.dark .history-title { color: #e2e8f0; }
+body.dark .history-meta { color: #94a3b8; }

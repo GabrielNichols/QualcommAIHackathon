@@ -107,7 +107,7 @@ export default function ContentArea({ showAgent, webviewRef, src }) {
           id="webview"
           ref={webviewRef}
           src={src}
-          style={{ width: '100%', height: '100%', border: 'none', background: '#ffffff' }}
+          style={{ width: '100%', height: '100%', border: 'none' }}
         />
       </div>
 
