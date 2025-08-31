@@ -60,14 +60,23 @@ export default function App() {
       updateNavButtons();
     };
 
+    // Captura automática quando a página termina de carregar
+    const handleDidFinishLoad = async () => {
+      try {
+        await capturePage({ save: false });
+      } catch {}
+    };
+
     wv.addEventListener('did-navigate', handleDidNavigate);
     wv.addEventListener('did-navigate-in-page', handleDidNavigateInPage);
+    wv.addEventListener('did-finish-load', handleDidFinishLoad);
 
     const interval = setInterval(updateNavButtons, 500);
 
     return () => {
       wv.removeEventListener('did-navigate', handleDidNavigate);
       wv.removeEventListener('did-navigate-in-page', handleDidNavigateInPage);
+      wv.removeEventListener('did-finish-load', handleDidFinishLoad);
       clearInterval(interval);
     };
   }, [currentTabIndex]);
@@ -148,6 +157,44 @@ export default function App() {
     setAddress(url);
   }
 
+  // Captura o HTML/Texto da página ativa; se save=true abre diálogo para salvar
+  async function capturePage({ save = false } = {}) {
+    const wv = webviewRef.current;
+    if (!wv) return;
+    try {
+      const [html, text, meta] = await Promise.all([
+        wv.executeJavaScript('document.documentElement.outerHTML'),
+        wv.executeJavaScript('document.body.innerText'),
+        wv.executeJavaScript('({ url: location.href, title: document.title })'),
+      ]);
+
+      // Log no console sempre que capturar
+      console.groupCollapsed('[Webview] HTML capturado');
+      console.log('URL:', meta?.url);
+      console.log('Título:', meta?.title);
+      console.log('HTML:');
+      console.log(html);
+      console.groupEnd();
+
+      const capture = {
+        url: meta?.url ?? activeTab.url,
+        title: meta?.title ?? activeTab.title,
+        html,
+        text,
+        capturedAt: Date.now(),
+      };
+      localStorage.setItem('lastPageCapture', JSON.stringify(capture));
+
+      // Salvar arquivo só quando explicitamente solicitado (botão)
+      if (save) {
+        const safe = (capture.title || 'pagina').replace(/[\\/:*?"<>|]/g, '_');
+        await window.api?.saveHTML?.(html, `${safe}.html`);
+      }
+    } catch (e) {
+      console.error('Falha ao capturar página:', e);
+    }
+  }
+
   useEffect(() => {
     const onKey = (event) => {
       if (!(event.ctrlKey || event.metaKey)) return;
@@ -199,6 +246,7 @@ export default function App() {
         onToggleAgent={() => setShowAgent(v => !v)}
         urlInputRef={urlInputRef}
         onHome={goHome}
+        onCapture={() => capturePage({ save: true })}
       />
 
       <ContentArea
