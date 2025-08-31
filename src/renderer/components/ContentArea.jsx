@@ -13,22 +13,36 @@ export default function ContentArea({ showAgent, webviewRef, src }) {
   const [chatChanged, setChatChanged] = useState(false);
   const [panelJustOpened, setPanelJustOpened] = useState(false);
 
+  // NOVO: controla montagem/fechamento do painel
+  const [panelVisible, setPanelVisible] = useState(showAgent);
+  const [panelClosing, setPanelClosing] = useState(false);
+
   const triggerChatChange = () => setChatChanged(true);
 
   useEffect(() => {
-    if (!chatChanged) return;
-    const t = setTimeout(() => setChatChanged(false), 500);
-    return () => clearTimeout(t);
-  }, [chatChanged]);
-
-  useEffect(() => {
-    if (!showAgent) return;
-    setPanelJustOpened(true);
-    const t = setTimeout(() => setPanelJustOpened(false), 250);
-    // também anima a área de chat ao abrir o Agent (reforça a mudança de contexto)
-    triggerChatChange();
-    return () => clearTimeout(t);
-  }, [showAgent]);
+    if (showAgent) {
+      // abrir: garante montagem + animação de entrada
+      setPanelVisible(true);
+      setPanelClosing(false);
+      setPanelJustOpened(true);
+      const tIn = setTimeout(() => setPanelJustOpened(false), 250);
+      // feedback visual no chat ao abrir
+      setChatChanged(true);
+      const tChat = setTimeout(() => setChatChanged(false), 500);
+      return () => {
+        clearTimeout(tIn);
+        clearTimeout(tChat);
+      };
+    } else if (panelVisible) {
+      // fechar: anima saída e desmonta após 320ms
+      setPanelClosing(true);
+      const tOut = setTimeout(() => {
+        setPanelClosing(false);
+        setPanelVisible(false);
+      }, 320);
+      return () => clearTimeout(tOut);
+    }
+  }, [showAgent, panelVisible]);
 
   // gera 300 partículas do orb uma vez
   const orbParticles = useMemo(() => {
@@ -124,7 +138,7 @@ export default function ContentArea({ showAgent, webviewRef, src }) {
     <div className="content-area">
       <div
         className="webview-container"
-        style={{ width: showAgent ? '60%' : '100%' }}
+        style={{ width: (showAgent || panelClosing) ? '60%' : '100%' }}
       >
         <webview
           id="webview"
@@ -134,8 +148,8 @@ export default function ContentArea({ showAgent, webviewRef, src }) {
         />
       </div>
 
-      {showAgent && (
-        <div className={`agent-panel ${panelJustOpened ? 'agent-enter' : ''}`}>
+      {panelVisible && (
+        <div className={`agent-panel ${panelJustOpened ? 'agent-enter' : ''} ${panelClosing ? 'agent-exit' : ''}`}>
           <div className="agent-header">
             <span>Agent</span>
             <div className="agent-head-actions">

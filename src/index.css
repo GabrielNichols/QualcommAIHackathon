@@ -56,7 +56,7 @@ body {
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 8px 16px;
+  padding: 8px 12px; /* was 8px 16px */
   background: #e2e8f0;
   border-radius: 8px 8px 0 0;
   cursor: pointer;
@@ -77,6 +77,15 @@ body {
   border-bottom-color: #ffffff;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   z-index: 1;
+  min-width: clamp(140px, 18vw, 220px); /* was clamp(160px, 24vw, 280px) */
+  max-width: 240px; /* was 320px */
+}
+
+.tab:not(.active) {
+  min-width: clamp(56px, 7vw, 88px);  /* was clamp(72px, 10vw, 120px) */
+  max-width: 100px;                    /* was 140px */
+  padding: 4px 8px;                    /* was 8px 10px */
+  justify-content: center;
 }
 
 .tab:hover:not(.active) {
@@ -92,7 +101,7 @@ body {
   right: 0;
   height: 3px;
   background: conic-gradient(from var(--angle), #ff4545, #00ff99, #006aff, #ff0095, #ff4545);
-  animation: spin 3s linear infinite;
+  animation: spin 7s infinite;
   opacity: 0.5; /* tabs inativas mais sutis */
   transition: opacity 0.2s ease;
 }
@@ -353,6 +362,7 @@ body {
   width: 100%;
   height: 100%;
   position: relative;
+  transition: width 0.65s ease; /* suaviza a mudança de largura quando o Agent abre/fecha */
 }
 
 #webview {
@@ -521,11 +531,20 @@ body {
 
 /* Entrada do painel Agent ao abrir */
 .agent-panel.agent-enter {
-  animation: agentPanelIn 0.24s ease-out;
+  animation: agentPanelIn 0.32s ease forwards; /* was 0.24s ease-out */
 }
 @keyframes agentPanelIn {
-  from { opacity: 0; transform: translateX(12px); }
+  from { opacity: 0; transform: translateX(100%); } /* entra da direita */
   to   { opacity: 1; transform: translateX(0); }
+}
+
+/* Saída do painel Agent ao fechar */
+.agent-panel.agent-exit {
+  animation: agentPanelOut 0.32s ease forwards;
+}
+@keyframes agentPanelOut {
+  from { opacity: 1; transform: translateX(0); }
+  to   { opacity: 0; transform: translateX(100%); } /* sai para a direita */
 }
 
 /* Área de mensagens */
@@ -835,9 +854,18 @@ body.dark .chat-messages.chat-changed {
   }
   
   .tab {
-    min-width: 100px;
+    min-width: 80px;   /* was 100px */
+    max-width: 140px;  /* was 180px */
+    padding: 6px 10px; /* was 6px 12px */
+  }
+  .tab.active {
+    min-width: clamp(120px, 34vw, 160px);
     max-width: 180px;
-    padding: 6px 12px;
+  }
+  .tab:not(.active) {
+    min-width: 64px;
+    max-width: 96px;
+    padding: 6px 8px;
   }
 }
 
