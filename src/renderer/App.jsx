@@ -60,13 +60,6 @@ export default function App() {
       updateNavButtons();
     };
 
-    // Captura automática quando a página termina de carregar
-    const handleDidFinishLoad = async () => {
-      try {
-        await capturePage({ save: false });
-      } catch {}
-    };
-
     wv.addEventListener('did-navigate', handleDidNavigate);
     wv.addEventListener('did-navigate-in-page', handleDidNavigateInPage);
     wv.addEventListener('did-finish-load', handleDidFinishLoad);
@@ -155,51 +148,7 @@ export default function App() {
       return next;
     });
     setAddress(url);
-  }
-
-  // Captura o texto (apenas) da página ativa; se save=true poderia salvar como .txt (desativado no UI)
-  async function capturePage({ save = false } = {}) {
-    const wv = webviewRef.current;
-    if (!wv) return;
-    try {
-      const [text, meta] = await Promise.all([
-        wv.executeJavaScript(`(() => {
-          const raw = document.body?.innerText || '';
-          // normaliza: tira espaços extras, remove linhas vazias e colapsa quebras
-          return raw
-            .replace(/[\\t\\r]+/g, ' ')
-            .split('\\n')
-            .map(l => l.trim().replace(/\\s{2,}/g, ' '))
-            .filter(l => l.length > 0)
-            .join('\\n');
-        })()`),
-        wv.executeJavaScript('({ url: location.href, title: document.title })'),
-      ]);
-
-      // Log no console somente com TEXTO
-      console.groupCollapsed('[Webview] TEXTO capturado');
-      console.log('URL:', meta?.url);
-      console.log('Título:', meta?.title);
-      console.log('Texto:');
-      console.log(text);
-      console.groupEnd();
-
-      const capture = {
-        url: meta?.url ?? activeTab.url,
-        title: meta?.title ?? activeTab.title,
-        text,              // apenas texto
-        capturedAt: Date.now(),
-      };
-      localStorage.setItem('lastPageCapture', JSON.stringify(capture));
-
-      // salvar em arquivo está desativado no UI; mantido para compatibilidade futura
-      if (save) {
-        // exemplo (desativado): await window.api?.saveHTML?.(text, `${safe}.txt`);
-      }
-    } catch (e) {
-      console.error('Falha ao capturar texto da página:', e);
-    }
-  }
+  }  
 
   useEffect(() => {
     const onKey = (event) => {
