@@ -62,12 +62,14 @@ export default function App() {
 
     wv.addEventListener('did-navigate', handleDidNavigate);
     wv.addEventListener('did-navigate-in-page', handleDidNavigateInPage);
+    wv.addEventListener('did-finish-load', handleDidFinishLoad);
 
     const interval = setInterval(updateNavButtons, 500);
 
     return () => {
       wv.removeEventListener('did-navigate', handleDidNavigate);
       wv.removeEventListener('did-navigate-in-page', handleDidNavigateInPage);
+      wv.removeEventListener('did-finish-load', handleDidFinishLoad);
       clearInterval(interval);
     };
   }, [currentTabIndex]);
@@ -146,7 +148,7 @@ export default function App() {
       return next;
     });
     setAddress(url);
-  }
+  }  
 
   useEffect(() => {
     const onKey = (event) => {
