@@ -19,6 +19,27 @@ export default function ContentArea({ showAgent, webviewRef, src }) {
 
   const triggerChatChange = () => setChatChanged(true);
 
+  // Texto e estado para efeito de digitação no hint da home
+  const HOME_HINT_TEXT = 'Olá Rafael, posso te ajudar?';
+  const [typedHomeHint, setTypedHomeHint] = useState('');
+
+  // Dispara a animação de digitação somente na aba inicial (about:blank)
+  useEffect(() => {
+    if (!src || src === 'about:blank') {
+      let i = 0;
+      const full = HOME_HINT_TEXT;
+      setTypedHomeHint('');
+      const timer = setInterval(() => {
+        i += 1;
+        setTypedHomeHint(full.slice(0, i));
+        if (i >= full.length) clearInterval(timer);
+      }, 60); // velocidade da digitação
+      return () => clearInterval(timer);
+    } else {
+      setTypedHomeHint('');
+    }
+  }, [src]);
+
   useEffect(() => {
     if (showAgent) {
       // abrir: garante montagem + animação de entrada
@@ -56,6 +77,13 @@ export default function ContentArea({ showAgent, webviewRef, src }) {
     }
     return arr;
   }, []);
+
+  // Mock: e-mails importantes
+  const mockEmails = useMemo(() => ([
+    { from: 'Equipe Itaú', subject: 'Atualização de segurança da conta', time: '08:24' },
+    { from: 'João - RH', subject: 'Assinatura do contrato', time: '09:12' },
+    { from: 'Cliente VIP', subject: 'Proposta comercial', time: 'Ontem' },
+  ]), []);
 
   // cria nova sessão e define como atual
   const createNewSession = (initialMessages) => {
@@ -140,12 +168,48 @@ export default function ContentArea({ showAgent, webviewRef, src }) {
         className="webview-container"
         style={{ width: (showAgent || panelClosing) ? '60%' : '100%' }}
       >
-        <webview
-          id="webview"
-          ref={webviewRef}
-          src={src}
-          style={{ width: '100%', height: '100%', border: 'none' }}
-        />
+        {(!src || src === 'about:blank') ? (
+          <>
+            {/* Caixa de indicações de e-mails importantes */}
+            <div className="home-email-suggestions" role="region" aria-label="E-mails importantes">
+              <div className="email-header">E-mails importantes</div>
+              <ul className="email-list">
+                {mockEmails.map((m, i) => (
+                  <li key={i} className="email-item">
+                    <div className="email-info">
+                      <div className="email-sender">{m.from}</div>
+                      <div className="email-subject">{m.subject}</div>
+                    </div>
+                    <div className="email-time">{m.time}</div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Orb + hint da home */}
+            <div className="home-orb-container" aria-hidden="true">
+              <div className="orb-stage">
+                <div className="orb-wrap">
+                  {orbParticles.map(({ i, z, y, delay }) => (
+                    <div
+                      key={i}
+                      className="orb-p"
+                      style={{ '--i': i, '--z': z, '--y': y, '--delay': delay }}
+                    />
+                  ))}
+                </div>
+              </div>
+              <div className="home-orb-hint">{typedHomeHint}</div>
+            </div>
+          </>
+        ) : (
+          <webview
+            id="webview"
+            ref={webviewRef}
+            src={src}
+            style={{ width: '100%', height: '100%', border: 'none' }}
+          />
+        )}
       </div>
 
       {panelVisible && (
@@ -297,6 +361,9 @@ export default function ContentArea({ showAgent, webviewRef, src }) {
               ))}
             </div>
           </div>
+
+          {/* Hint acima dos controles */}
+          <div className="orb-prompt">Pressione para falar</div>
 
           <div className="orb-controls">
             <button
