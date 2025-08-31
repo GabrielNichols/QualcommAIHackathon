@@ -19,13 +19,13 @@ Seu projeto é um navegador agentic pensado para analistas do Itaú usando PCs C
 
 ```mermaid
 flowchart LR
-  U[Usuário] --> GUI[Electron + React (UI)]
-  GUI --> MCP[(MCP Tools: openTab, find, click, fill, extract, screenshot)]
-  MCP --> DOM[Chromium/Electron (DOM/Abas/Sessões)]
+  U[Usuario] --> GUI[Electron + React UI]
+  GUI --> MCP[Browser Tools via MCP]
+  MCP --> DOM[Chromium DOM/Abas/Sessoes]
 
   GUI --> API[FastAPI Backend]
   API --> LG[LangGraph Supervisor]
-  LG -->|roteia| Res[Researcher]
+  LG --> Res[Researcher]
   LG --> Form[Form Filler]
   LG --> Auto[Automations]
   LG --> Overlay[Overlay]
@@ -33,11 +33,18 @@ flowchart LR
   LG --> Reporter[Reporter]
   LG --> Chatbot[Chatbot]
 
-  Res & Form & Auto & Overlay & Critic & Reporter & Chatbot --> MCP
+  Res --> MCP
+  Form --> MCP
+  Auto --> MCP
+  Overlay --> MCP
+  Critic --> MCP
+  Reporter --> MCP
+  Chatbot --> MCP
 
-  Res & Chatbot -. contexto .-> RAG[(Embeddings ONNX + FAISS)]
-  LG --> LLM[(LLM Llama 3.2‑3B • ONNX/GenAI • QNN/NPU)]
-  Reporter --> ZIP[(Evidence Pack: logs + prints + hashes)]
+  Res -. contexto .-> RAG[Embeddings ONNX + FAISS]
+  Chatbot -. contexto .-> RAG
+  LG --> LLM[LLM Llama 3.2-3B ONNX/GenAI QNN/NPU]
+  Reporter --> ZIP[Evidence Pack: logs + prints + hashes]
 ```
 
 ## 🤖 Agentes (resumo)
