@@ -1,1 +1,381 @@
-/.venv
+# =============================================
+# AGENTIC BROWSER BACKEND - .GITIGNORE
+# Qualcomm AI Hackathon 2025 - Itaú Project
+# =============================================
+
+# ---------------------------------------------
+# PYTHON
+# ---------------------------------------------
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# ---------------------------------------------
+# VIRTUAL ENVIRONMENTS
+# ---------------------------------------------
+# pipenv
+Pipfile.lock
+
+# PEP 582; used by e.g. github.com/David-OConnor/pyflow
+__pypackages__/
+
+# Celery stuff
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath parsed files
+*.sage.py
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# pytype static type analyzer
+.pytype/
+
+# Cython debug symbols
+cython_debug/
+
+# ---------------------------------------------
+# MACHINE LEARNING / AI MODELS
+# ---------------------------------------------
+# Model files (large binary files)
+*.bin
+*.onnx
+*.pb
+*.h5
+*.hdf5
+*.pkl
+*.pickle
+*.joblib
+*.model
+*.weights
+*.ckpt
+*.pth
+*.pt
+
+# Hugging Face cache
+.huggingface/
+cache/
+*.cache
+datasets/
+models/
+tokenizers/
+
+# TensorFlow / PyTorch
+checkpoint
+checkpoints/
+tensorboard/
+runs/
+lightning_logs/
+wandb/
+
+# ONNX Runtime
+.onnxruntime/
+
+# Model artifacts
+model_artifacts/
+saved_models/
+model_checkpoints/
+
+# ---------------------------------------------
+# DATA & STORAGE
+# ---------------------------------------------
+# Data directories (may contain sensitive info)
+data/
+*.db
+*.sqlite
+*.sqlite3
+
+# Evidence packs (logs, screenshots, PII)
+evidence/
+evidence_*.zip
+logs/
+*.log
+*.log.*
+
+# Vector stores and indices
+indexes/
+*.index
+*.faiss
+*.ann
+
+# Temporary data
+temp/
+tmp/
+.cache/
+.tmp/
+
+# ---------------------------------------------
+# TESTING
+# ---------------------------------------------
+# Coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+cover/
+
+# Translations
+*.mo
+*.pot
+
+# Django stuff:
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+# Flask stuff:
+instance/
+.webassets-cache
+
+# Scrapy stuff:
+.scrapy
+
+# Sphinx documentation
+docs/_build/
+
+# PyBuilder
+.pybuilder/
+target/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# pyenv
+.python-version
+
+# pipenv
+Pipfile.lock
+
+# poetry
+poetry.lock
+
+# pdm
+.pdm.toml
+
+# PEP 582
+__pypackages__/
+
+# Celery stuff
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath parsed files
+*.sage.py
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# ---------------------------------------------
+# IDEs & EDITORS
+# ---------------------------------------------
+# VSCode
+.vscode/
+*.code-workspace
+.history/
+
+# PyCharm
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*.swp
+*.swo
+*~
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# ---------------------------------------------
+# SECURITY & SENSITIVE DATA
+# ---------------------------------------------
+# API keys, secrets, credentials
+secrets/
+credentials/
+keys/
+*.key
+*.pem
+*.crt
+*.cer
+*.p12
+*.pfx
+
+# Password files
+.htpasswd
+
+# Private configuration
+config.local.*
+local_settings.*
+private.*
+
+# ---------------------------------------------
+# BUILD & DEPLOYMENT
+# ---------------------------------------------
+# Docker
+.dockerignore
+docker-compose.override.yml
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Kubernetes
+*.yaml.bak
+k8s/
+
+# Cloud deployments
+.terraform/
+*.tfstate
+*.tfstate.backup
+
+# ---------------------------------------------
+# DEVELOPMENT TOOLS
+# ---------------------------------------------
+# Pre-commit hooks
+.pre-commit-config.yaml
+
+# Linting
+.pylint.d/
+.ruff_cache/
+
+# Formatting
+.black
+
+# Documentation
+docs/build/
+docs/source/_build/
+
+# ---------------------------------------------
+# BACKUP FILES
+# ---------------------------------------------
+*.bak
+*.backup
+*.old
+*.orig
+*.swp
+*.tmp
+
+# ---------------------------------------------
+# PROJECT SPECIFIC
+# ---------------------------------------------
+# Model QA script outputs
+model_qa_output/
+model_qa_results/
+
+# Downloaded models (duplicates)
+models/Llama3.2-3B-QNN/
+quant-model/
+
+# Test artifacts
+test_outputs/
+test_data/
+benchmark_results/
+
+# Development notes
+NOTES.md
+TODO.md
+scratch.py
+
+# ---------------------------------------------
+# CUSTOM IGNORE RULES
+# ---------------------------------------------
+# Add project-specific ignores here
+
+# =============================================
+# END OF .GITIGNORE
+# =============================================
